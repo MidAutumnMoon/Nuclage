@@ -33,4 +33,7 @@ final: prev:
   chromium-teapot =
     final.callPackage ./custom/browsers/chromium { };
 
+  firefox-teapot =
+    final.callPackage ./custom/browsers/firefox { };
+
 }
