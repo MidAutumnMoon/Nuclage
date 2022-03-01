@@ -2,12 +2,18 @@
 
   description = "Nuran's packages";
 
+
   inputs =
     {
+      nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
 
-  outputs = { self, ... } @ inputs:
+
+  outputs = { self, nixpkgs, ... } @ flake:
     {
+
+      overlay = import ./default.nix;
+
     };
 
 }
