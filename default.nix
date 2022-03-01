@@ -24,4 +24,13 @@ final: prev:
   graphite-cursor-theme =
     final.callPackage ./themes/cursors/graphite-cursor-theme { };
 
+
+
+  #
+  # Custom: custom builds of packages others should abs not use
+  #
+
+  chromium-teapot =
+    final.callPackage ./custom/browsers/chromium { };
+
 }
