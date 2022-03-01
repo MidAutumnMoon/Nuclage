@@ -34,6 +34,8 @@ stdenvNoCC.mkDerivation {
   pname = "k380-auto-fn-udev";
   version = "0.1";
 
+  preferLocalBuild = true;
+
 
   passAsFile = [ "udevRule" ];
 
