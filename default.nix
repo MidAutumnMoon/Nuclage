@@ -18,7 +18,7 @@ final: prev:
 
 
   #
-  # Themes: designs whoes colors and shapes are insane and wierd
+  # Themes: designs whose colors and shapes are insane and weird
   #
 
   graphite-cursor-theme =
