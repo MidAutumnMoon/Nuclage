@@ -5,7 +5,23 @@
 
   inputs =
     {
+
       nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+
+      # Overlays from other repos by MidAutumnMoon
+      #
+
+      Barbfish =
+        { url = "github:MidAutumnMoon/Barbfish";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+      Opah =
+        { url = "github:MidAutumnMoon/Opah";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
 
 
@@ -17,20 +33,31 @@
 
     in
 
-      {
-        overlay = import ./default.nix;
+    rec {
+      # Softwares packaged by Nuclage.
+      #
+      overlay = import ./default.nix;
 
-        # For tesing the packages.
-        #
-        packages.${system} = import nixpkgs
-          {
-            inherit system;
-            overlays =
-              [
-                self.overlay
-              ];
-          };
 
-      };
+      # Nuclage's overlay plus other projects'
+      #
+      totalOverlays = with flake;
+        [
+          self.overlay
+
+          Barbfish.overlay
+          Opah.overlay
+        ];
+
+
+      # For tesing the packages.
+      #
+      packages.${system} = import nixpkgs
+        {
+          inherit system;
+          overlays = totalOverlays;
+        };
+
+    };
 
 }

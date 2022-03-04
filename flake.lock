@@ -1,12 +1,52 @@
 {
   "nodes": {
+    "Barbfish": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1646376501,
+        "narHash": "sha256-piM21K4BHTSxolJVNUmiqAX6NP/D7hj8UY0BsPrtR1w=",
+        "owner": "MidAutumnMoon",
+        "repo": "Barbfish",
+        "rev": "d1eb5f5711a2e47f33ae9d08c5bb4596d0531d00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MidAutumnMoon",
+        "repo": "Barbfish",
+        "type": "github"
+      }
+    },
+    "Opah": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1646377079,
+        "narHash": "sha256-/kqMioSBnvZeXtBuK8aLNb1vyL1zgqfMYp84UF0XoOk=",
+        "owner": "MidAutumnMoon",
+        "repo": "Opah",
+        "rev": "971c49722007e2313d52d19392fccd3ad3d863c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MidAutumnMoon",
+        "repo": "Opah",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1645937171,
-        "narHash": "sha256-n9f9GZBNMe8UMhcgmmaXNObkH01jjgp7INMrUgBgcy4=",
+        "lastModified": 1646331602,
+        "narHash": "sha256-cRuytTfel52z947yKfJcZU7zbQBgM16qqTf+oJkVwtg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "22dc22f8cedc58fcb11afe1acb08e9999e78be9c",
+        "rev": "ad267cc9cf3d5a6ae63940df31eb31382d6356e6",
         "type": "github"
       },
       "original": {
@@ -18,6 +58,8 @@
     },
     "root": {
       "inputs": {
+        "Barbfish": "Barbfish",
+        "Opah": "Opah",
         "nixpkgs": "nixpkgs"
       }
     }
