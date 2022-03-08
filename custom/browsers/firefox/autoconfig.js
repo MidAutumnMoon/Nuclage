@@ -163,7 +163,6 @@ pref( 'network.proxy.socks_remote_dns', true );
 
 pref( 'pdfjs.enableScripting', false );
 
-pref( 'privacy.resistFingerprinting', true );
 pref( 'privacy.spoof_english',        1 );
 pref( 'privacy.trackingprotection.socialtracking.enabled', true );
 
