@@ -8,15 +8,8 @@
 
       nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-
       # Overlays from other repos by MidAutumnMoon
       #
-
-      Barbfish =
-        { url = "github:MidAutumnMoon/Barbfish";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
-
       Opah =
         { url = "github:MidAutumnMoon/Opah";
           inputs.nixpkgs.follows = "nixpkgs";
@@ -44,8 +37,6 @@
       totalOverlays = with flake;
         [
           self.overlay
-
-          Barbfish.overlay
           Opah.overlay
         ];
 
