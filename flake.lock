@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "Barbfish": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1646376501,
-        "narHash": "sha256-piM21K4BHTSxolJVNUmiqAX6NP/D7hj8UY0BsPrtR1w=",
-        "owner": "MidAutumnMoon",
-        "repo": "Barbfish",
-        "rev": "d1eb5f5711a2e47f33ae9d08c5bb4596d0531d00",
-        "type": "github"
-      },
-      "original": {
-        "owner": "MidAutumnMoon",
-        "repo": "Barbfish",
-        "type": "github"
-      }
-    },
     "Opah": {
       "inputs": {
         "nixpkgs": [
@@ -58,7 +38,6 @@
     },
     "root": {
       "inputs": {
-        "Barbfish": "Barbfish",
         "Opah": "Opah",
         "nixpkgs": "nixpkgs"
       }

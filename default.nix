@@ -18,6 +18,15 @@ final: prev:
 
 
   #
+  # Editor: smart editors right to hurt you
+  #
+
+  vimPlugins =
+    prev.vimPlugins.extend (prev.callPackage ./editor/vim/vim-plugins { });
+
+
+
+  #
   # Themes: designs whose colors and shapes are insane and weird
   #
 
