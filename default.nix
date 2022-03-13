@@ -45,4 +45,26 @@ final: prev:
   firefox-teapot =
     final.callPackage ./custom/browsers/firefox { };
 
+
+
+  #
+  # Temporary: in another word it's permanent
+  #
+
+  # See
+  #   - https://github.com/NixOS/nixpkgs/pull/163886
+  #   - https://github.com/NixOS/nixpkgs/pull/163904
+  #
+  # It was reverted in nixpkgs because of the build failure on aarch64.
+  fish = prev.fish.overrideAttrs (oldAttrs:
+    {
+      version = "3.4.0";
+      src = final.fetchurl
+        {
+          url = "https://github.com/fish-shell/fish-shell/releases/download/3.4.0/fish-3.4.0.tar.xz";
+          sha256 = "sha256-tbSKuEhrGe9xajL39GuIuepTVhVfDpZ+6Z9Ak2RUE8U=";
+        };
+      patches = [ ];
+    });
+
 }
