@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1646377079,
-        "narHash": "sha256-/kqMioSBnvZeXtBuK8aLNb1vyL1zgqfMYp84UF0XoOk=",
+        "lastModified": 1647195396,
+        "narHash": "sha256-lZFujKgG1IhR5Pt1eMYNc563rTxoSvq5j1JESbJNqWQ=",
         "owner": "MidAutumnMoon",
         "repo": "Opah",
-        "rev": "971c49722007e2313d52d19392fccd3ad3d863c8",
+        "rev": "beab4dda099b6a023d4eb911248691feba755ed1",
         "type": "github"
       },
       "original": {
@@ -22,16 +22,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1646331602,
-        "narHash": "sha256-cRuytTfel52z947yKfJcZU7zbQBgM16qqTf+oJkVwtg=",
+        "lastModified": 1647380550,
+        "narHash": "sha256-909TI9poX7CIUiFx203WL29YON6m/I6k0ExbZvR7bLM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ad267cc9cf3d5a6ae63940df31eb31382d6356e6",
+        "rev": "6e3ee8957637a60f5072e33d78e05c0f65c54366",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
         "type": "github"
       }

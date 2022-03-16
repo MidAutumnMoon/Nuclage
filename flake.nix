@@ -6,7 +6,7 @@
   inputs =
     {
 
-      nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
       # Used to pin Firefox at 97, until
       # new version become available in cache.
