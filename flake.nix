@@ -8,6 +8,10 @@
 
       nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+      # Used to pin Firefox at 97, until
+      # new version become available in cache.
+      nixpkgs-alter.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
       # Overlays from other repos by MidAutumnMoon
       #
       Opah =
@@ -24,6 +28,16 @@
 
       system = "x86_64-linux";
 
+      temporaryOverlay = final: prev:
+        let
+          alter-pkgs =
+            import flake.nixpkgs-alter { inherit (final) system; };
+        in
+        {
+          firefox = alter-pkgs.firefox;
+          chromium = alter-pkgs.chromium;
+        };
+
     in
 
     rec {
@@ -36,6 +50,7 @@
       #
       totalOverlays = with flake;
         [
+          temporaryOverlay
           self.overlay
           Opah.overlay
         ];
