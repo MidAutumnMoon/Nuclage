@@ -51,8 +51,8 @@
       totalOverlays = with flake;
         [
           temporaryOverlay
-          self.overlay
           Opah.overlay
+          self.overlay
         ];
 
 

@@ -7,13 +7,13 @@ final: prev:
   #
 
   k380-function-key-conf =
-    final.callPackage ./utils/keyboard/k380-function-key-conf { };
+    prev.callPackage ./utils/keyboard/k380-function-key-conf { };
 
   k380-auto-fn-udev =
-    final.callPackage ./utils/keyboard/k380-auto-fn-udev { };
+    prev.callPackage ./utils/keyboard/k380-auto-fn-udev { };
 
   prime-offload =
-    final.callPackage ./utils/prime-offload { };
+    prev.callPackage ./utils/prime-offload { };
 
 
 
@@ -31,7 +31,7 @@ final: prev:
   #
 
   graphite-cursor-theme =
-    final.callPackage ./themes/cursors/graphite-cursor-theme { };
+    prev.callPackage ./themes/cursors/graphite-cursor-theme { };
 
 
 
@@ -40,10 +40,13 @@ final: prev:
   #
 
   chromium-teapot =
-    final.callPackage ./custom/browsers/chromium { };
+    prev.callPackage ./custom/browsers/chromium { };
 
   firefox-teapot =
-    final.callPackage ./custom/browsers/firefox { };
+    prev.callPackage ./custom/browsers/firefox { };
+
+  systemd-teapot =
+    prev.callPackage ./custom/systemd { inherit (prev) systemd; };
 
 
 
