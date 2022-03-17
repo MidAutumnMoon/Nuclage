@@ -34,7 +34,6 @@
             import flake.nixpkgs-alter { inherit (final) system; };
         in
         {
-          firefox = alter-pkgs.firefox;
           chromium = alter-pkgs.chromium;
         };
 
