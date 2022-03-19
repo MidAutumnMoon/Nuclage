@@ -45,9 +45,6 @@ final: prev:
   firefox-teapot =
     prev.callPackage ./custom/browsers/firefox { };
 
-  systemd-teapot =
-    prev.callPackage ./custom/systemd { inherit (prev) systemd; };
-
 
 
   #
