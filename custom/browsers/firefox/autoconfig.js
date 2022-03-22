@@ -63,6 +63,7 @@ pref( 'browser.urlbar.quicksuggest.scenario',       'history' );
 pref( 'browser.urlbar.trimURLs',                    false );
 pref( 'browser.discovery.enabled',                  false );
 pref( 'browser.urlbar.keepPanelOpenDuringImeComposition', true );
+pref( 'browser.urlbar.decodeURLsOnCopy',            true );
 
 pref( 'browser.urlbar.shortcuts.bookmarks', false );  // Annoying!
 pref( 'browser.urlbar.shortcuts.history',   false );
@@ -72,6 +73,7 @@ pref( 'browser.urlbar.suggest.openpage',    false );
 pref( 'browser.urlbar.suggest.topsites',    false );
 pref( 'browser.urlbar.suggest.calculator',  true );   // But calculator is fun.
 
+pref( 'toolkit.tabbox.switchByScrolling', true );
 pref( 'browser.tabs.insertAfterCurrent', true );
 pref( 'findbar.highlightAll', true );
 
@@ -85,8 +87,6 @@ pref( 'media.videocontrols.picture-in-picture.video-toggle.has-used',    true );
 pref( 'pref.general.disable_button.default_browser', true );
 
 pref( 'widget.non-native-theme.gtk.scrollbar.allow-buttons', true );
-
-pref( 'toolkit.tabbox.switchByScrolling', true );
 
 pref( 'security.insecure_password.ui.enabled', true );
 pref( 'security.insecure_field_warning.contextual.enabled', true );
