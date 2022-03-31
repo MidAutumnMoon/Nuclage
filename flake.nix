@@ -7,11 +7,13 @@
     {
 
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+      nulib.url = "github:MidAutumnMoon/Nulib";
 
       # Overlays from other projects by MidAutumnMoon
       Opah =
         { url = "github:MidAutumnMoon/Opah";
           inputs.nixpkgs.follows = "nixpkgs";
+          inputs.nulib.follows = "nulib";
         };
 
     };
@@ -25,7 +27,7 @@
 
     in
 
-    rec {
+    {
       # Softwares packaged by Nuclage.
       #
       overlay = import ./default.nix;
@@ -45,7 +47,7 @@
       packages.${system} = import nixpkgs
         {
           inherit system;
-          overlays = totalOverlays;
+          overlays = self.totalOverlays;
         };
 
     };

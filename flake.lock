@@ -36,10 +36,26 @@
         "type": "github"
       }
     },
+    "nulib": {
+      "locked": {
+        "lastModified": 1648721829,
+        "narHash": "sha256-QxdqCBJxwkLl5doe3dQsclPqDqEtw1cNq+hJXDlTqN0=",
+        "owner": "MidAutumnMoon",
+        "repo": "Nulib",
+        "rev": "3b68e7ab313306f5ab0f35fab0e28791fd569fa6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MidAutumnMoon",
+        "repo": "Nulib",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "Opah": "Opah",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nulib": "nulib"
       }
     }
   },
