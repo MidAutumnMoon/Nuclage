@@ -10,8 +10,8 @@ stdenvNoCC.mkDerivation rec {
     {
       owner = "vinceliuice";
       repo = "Graphite-cursors";
-      rev = "${version}";
-      sha256 = "abnCIoPTbhyeWVBLiNjBI2+/6IIQ6I6lS/rvoVrselY=";
+      rev = "4d712ade52817b3970ae929f28beaf9301e922ee";
+      sha256 = "Kopl2NweYrq9rhw+0EUMhY/pfGo4g387927TZAhI5/A=";
     };
 
 
