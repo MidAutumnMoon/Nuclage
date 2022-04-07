@@ -4,14 +4,17 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
+        ],
+        "nulib": [
+          "nulib"
         ]
       },
       "locked": {
-        "lastModified": 1647195396,
-        "narHash": "sha256-lZFujKgG1IhR5Pt1eMYNc563rTxoSvq5j1JESbJNqWQ=",
+        "lastModified": 1648731458,
+        "narHash": "sha256-ZPVK48QcAu8y1UlIWYpVExzCZtusvL25Zm/cLR3+6G0=",
         "owner": "MidAutumnMoon",
         "repo": "Opah",
-        "rev": "beab4dda099b6a023d4eb911248691feba755ed1",
+        "rev": "98827935509e92b969a3cbd33ccc81f8ce7dfcdc",
         "type": "github"
       },
       "original": {
@@ -22,11 +25,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1647808254,
-        "narHash": "sha256-yajQF+iTkFdvorc/OsEgC1+HLPT/uwLYE4ds8HAURkA=",
+        "lastModified": 1649270075,
+        "narHash": "sha256-m4QzKyk2xtJNKK07MWQK0b0fafj0/4fPlFa4F/YPehw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e2f381b2f1879ad6d68be5a9e9e6e3288529bfaf",
+        "rev": "a64987375ffc8e9cc093150596c9bee215e4d6f4",
         "type": "github"
       },
       "original": {
@@ -38,11 +41,11 @@
     },
     "nulib": {
       "locked": {
-        "lastModified": 1648721829,
-        "narHash": "sha256-QxdqCBJxwkLl5doe3dQsclPqDqEtw1cNq+hJXDlTqN0=",
+        "lastModified": 1649313333,
+        "narHash": "sha256-lUeo505f+pJtsUKT5Bnc2yOZzqR7ol1RydBx7bwDwt8=",
         "owner": "MidAutumnMoon",
         "repo": "Nulib",
-        "rev": "3b68e7ab313306f5ab0f35fab0e28791fd569fa6",
+        "rev": "108bcc9db9f9d78b4cd31826e5cb7eec26fc11d7",
         "type": "github"
       },
       "original": {
@@ -55,7 +58,23 @@
       "inputs": {
         "Opah": "Opah",
         "nixpkgs": "nixpkgs",
-        "nulib": "nulib"
+        "nulib": "nulib",
+        "slightly-older-nixpkgs": "slightly-older-nixpkgs"
+      }
+    },
+    "slightly-older-nixpkgs": {
+      "locked": {
+        "lastModified": 1649196536,
+        "narHash": "sha256-Q5PxIYE/PW57LHLRCdIQ4jNbbz5L3HZKOSkNIu0rn5c=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "04ce3788d37dc3f5ab1b156f2a817c8e7630b3b4",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "rev": "04ce3788d37dc3f5ab1b156f2a817c8e7630b3b4",
+        "type": "indirect"
       }
     }
   },
