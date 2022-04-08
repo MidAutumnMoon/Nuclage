@@ -1,4 +1,9 @@
-{ callPackage, fetchFromGitHub }:
+{
+  callPackage
+, fetchFromGitHub
+, vimUtils
+,
+}:
 
 self: super: {
 
@@ -23,6 +28,26 @@ self: super: {
       meta.homepage =
         "https://github.com/benknoble/vim-racket";
     });
+
+
+
+  # filetype.nvim
+  #
+  # https://github.com/nathom/filetype.nvim
+  #
+  "filetype-nvim" = vimUtils.buildVimPlugin
+    {
+      pname = "filetype-nvim";
+      version = "v0.4";
+
+      src = fetchFromGitHub
+        {
+          owner  = "nathom";
+          repo   = "filetype.nvim";
+          rev    = "25b5f7e5314d5e7739be726860253c67f7e513bf";
+          sha256 = "UjLD3CGlrW43WMiIISFkd59GpsZLRo8WzoS2hD2rX+I=";
+        };
+    };
 
 
 }
