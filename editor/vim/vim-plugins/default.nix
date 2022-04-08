@@ -16,8 +16,7 @@ self: super: {
   #
   "vim-racket" = super."vim-racket".overrideAttrs (oldAttrs:
     {
-      version =
-        "unstable";
+      version = "unstable";
       src = fetchFromGitHub
         {
           owner = "benknoble";
@@ -28,7 +27,6 @@ self: super: {
       meta.homepage =
         "https://github.com/benknoble/vim-racket";
     });
-
 
 
   # filetype.nvim
@@ -49,5 +47,10 @@ self: super: {
         };
     };
 
+
+  # The custom treesitter
+  #
+  nvim-treesitter-teapot =
+    callPackage ./treesitter-teapot.nix { };
 
 }
