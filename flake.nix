@@ -16,7 +16,7 @@
         "nixpkgs/04ce3788d37dc3f5ab1b156f2a817c8e7630b3b4";
 
 
-      # Overlays from other projects by MidAutumnMoon
+      # MidAutumnMoon's 1p overlays
 
       Opah =
         { url = "github:MidAutumnMoon/Opah";
@@ -41,7 +41,7 @@
         };
 
 
-      # Firefox 99 breaks itself.
+      # New glibc breaks Firefox 99
 
       olderPkgsForSystems =
         lib.importNixpkgs { nixpkgs = flake.slightly-older-nixpkgs; };
@@ -55,21 +55,25 @@
     in
 
     {
-      # Softwares packaged by Nuclage.
 
-      overlay = import ./default.nix;
+      # Various overlays...
+
+      overlays.default =
+        import ./default.nix;
 
 
-      # Nuclage's overlay plus other projects'
+      # ...combined altogether...
 
       totalOverlays = with flake;
         [
           overrideFirefoxOverlay
 
           Opah.overlay
-          self.overlay
-        ];
+        ]
+          ++ (builtins.attrValues self.overlays);
 
+
+      # ...and also be able to build some of them...
 
       packages = pkgsForSystem lib.id;
     };
