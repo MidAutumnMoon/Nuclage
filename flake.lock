@@ -58,23 +58,7 @@
       "inputs": {
         "Opah": "Opah",
         "nixpkgs": "nixpkgs",
-        "nulib": "nulib",
-        "slightly-older-nixpkgs": "slightly-older-nixpkgs"
-      }
-    },
-    "slightly-older-nixpkgs": {
-      "locked": {
-        "lastModified": 1649196536,
-        "narHash": "sha256-Q5PxIYE/PW57LHLRCdIQ4jNbbz5L3HZKOSkNIu0rn5c=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "04ce3788d37dc3f5ab1b156f2a817c8e7630b3b4",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "rev": "04ce3788d37dc3f5ab1b156f2a817c8e7630b3b4",
-        "type": "indirect"
+        "nulib": "nulib"
       }
     }
   },
