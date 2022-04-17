@@ -1,7 +1,8 @@
 {
   callPackage
 , fetchFromGitHub
-, vimUtils
+,
+  vimUtils
 ,
 }:
 
@@ -52,5 +53,27 @@ self: super: {
   #
   nvim-treesitter-teapot =
     callPackage ./treesitter-teapot.nix { };
+
+
+  # guile.vim
+  #
+  # https://github.com/HiPhish/guile.vim
+  #
+  "guile-vim" = vimUtils.buildVimPlugin
+    {
+      pname = "guile-vim";
+      version = "master";
+
+      patchPhase =
+        "rm -v makefile";
+
+      src = fetchFromGitHub
+        {
+          owner  = "HiPhish";
+          repo   = "guile.vim";
+          rev    = "f76959a9dbdc69cde018901de82ac5a3d443843c";
+          sha256 = "CTfenSy5e18he8dIiOB2DsrWjqpar8Lks6hd27SGFN8=";
+        };
+    };
 
 }
