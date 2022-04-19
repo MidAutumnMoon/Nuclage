@@ -36,6 +36,14 @@ final: prev:
 
 
   #
+  # Fonts: there's no symbol more beautiful than a whitespace
+  #
+  comic-mono =
+    prev.callPackage ./fonts/comic-mono { };
+
+
+
+  #
   # Custom: custom builds of packages others should abs not use
   #
 
