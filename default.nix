@@ -22,7 +22,10 @@ final: prev:
   #
 
   vimPlugins =
-    prev.vimPlugins.extend (prev.callPackage ./editor/vim/vim-plugins { });
+    prev.vimPlugins.extend ( prev.callPackage ./editor/vim/vim-plugins { } );
+
+  neovim-numinus =
+    prev.callPackage ./editor/neovim/numinus { };
 
 
 
