@@ -1,5 +1,11 @@
 final: prev:
 
+let
+
+  callPackage = final.callPackage;
+
+in
+
 {
 
   #
@@ -7,13 +13,13 @@ final: prev:
   #
 
   k380-function-key-conf =
-    prev.callPackage ./utils/keyboard/k380-function-key-conf { };
+    callPackage ./utils/keyboard/k380-function-key-conf { };
 
   k380-auto-fn-udev =
-    prev.callPackage ./utils/keyboard/k380-auto-fn-udev { };
+    callPackage ./utils/keyboard/k380-auto-fn-udev { };
 
   prime-offload =
-    prev.callPackage ./utils/prime-offload { };
+    callPackage ./utils/prime-offload { };
 
 
 
@@ -22,10 +28,10 @@ final: prev:
   #
 
   vimPlugins =
-    prev.vimPlugins.extend ( prev.callPackage ./editor/vim/vim-plugins { } );
+    prev.vimPlugins.extend ( callPackage ./editor/vim/vim-plugins { } );
 
   neovim-numinus =
-    prev.callPackage ./editor/neovim/numinus { };
+    callPackage ./editor/neovim/numinus { };
 
 
 
@@ -34,7 +40,7 @@ final: prev:
   #
 
   graphite-cursor-theme =
-    prev.callPackage ./themes/cursors/graphite-cursor-theme { };
+    callPackage ./themes/cursors/graphite-cursor-theme { };
 
 
 
@@ -42,7 +48,7 @@ final: prev:
   # Fonts: there's no symbol more beautiful than a whitespace
   #
   comic-mono =
-    prev.callPackage ./fonts/comic-mono { };
+    callPackage ./fonts/comic-mono { };
 
 
 
@@ -51,15 +57,24 @@ final: prev:
   #
 
   chromium-teapot =
-    prev.callPackage ./custom/browsers/chromium { };
+    callPackage ./custom/browsers/chromium { };
 
   firefox-teapot =
-    prev.callPackage ./custom/browsers/firefox { };
+    callPackage ./custom/browsers/firefox { };
 
 
 
   #
   # Temporary: in another word it's permanent
   #
+
+
+
+  #
+  # Break: the only good thing above all sections
+  #
+
+  plasma5Packages =
+    callPackage ./break/plasma5-packages { inherit (prev) plasma5Packages; };
 
 }
