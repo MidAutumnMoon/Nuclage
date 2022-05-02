@@ -27,9 +27,6 @@ in
   # Editor: smart editors right to hurt you
   #
 
-  vimPlugins =
-    prev.vimPlugins.extend ( callPackage ./editor/vim/vim-plugins { } );
-
   neovim-numinus =
     callPackage ./editor/neovim/numinus { };
 
