@@ -79,6 +79,8 @@ pref( 'findbar.highlightAll', true );
 
 pref( 'general.autoScroll', true );
 pref( 'general.smoothScroll.msdPhysics.enabled', true );
+pref( 'mousewheel.default.delta_multiplier_x',   92 )
+pref( 'mousewheel.default.delta_multiplier_y',   92 )
 
 pref( 'media.videocontrols.picture-in-picture.audio-toggle.enabled',     true );
 pref( 'media.videocontrols.picture-in-picture.video-toggle.always-show', true );
