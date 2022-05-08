@@ -30,6 +30,9 @@ in
   neovim-numinus =
     callPackage ./editor/neovim/numinus { };
 
+  neovim-numinus-static-conf =
+    callPackage ./editor/neovim/numinus/static-conf.nix {  };
+
 
   #
   # Languages: a monkey with a typewriter can do express better

@@ -1,43 +1,43 @@
 {
-  wrapNeovimUnstable
-, neovimUtils
+  lib, wrapNeovim
 ,
   neovim-unwrapped
-, lib
 ,
-  # add these packages' bin/
-  # to Neovim's PATH
+  # add these packages to
+  # the wrapper's PATH
   otherTools ? [ ]
+,
+  #
+  customRC ? null
 }:
 
-let
+# "wrapNeovim" is the marked as the "legacy" wrapper,
+# but it uses the new "wrapNeovimUnstable" under
+# the hood and its interface is much more cleaner
+# than the makeNeovimConfig + wrapNeovimUnstable
+# combination.
+#
+# What the .... :(
 
-  otherToolPaths =
-    lib.makeBinPath otherTools;
+wrapNeovim neovim-unwrapped (
+  {
+    extraName = "-numinus";
 
-  neovim_config = neovimUtils.makeNeovimConfig
-    {
-      withPython3 = false;
-      withRuby = false;
-    };
+    withRuby = false;
+    withNodeJs = false;
+    withPython3 = false;
 
-in
+    vimAlias = true;
+    viAlias = true;
 
-wrapNeovimUnstable neovim-unwrapped
-  (
-    neovim_config
-      //
-    {
-      extraName = "-numinus";
-      wrapRc = false;
-
-      wrapperArgs =
-        neovim_config.wrapperArgs
-          ++
-        [
-          "--prefix" "PATH" ":" otherToolPaths
-        ];
-    }
+    extraMakeWrapperArgs =
+      ''
+        --prefix "PATH" ":" "${lib.makeBinPath otherTools}"
+      '';
+  }
+    //
+  ( if customRC == null
+    then {  }
+    else { configure.customRC = customRC; }
   )
-
-
+)
