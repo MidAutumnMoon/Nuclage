@@ -13,11 +13,11 @@ let
   numinus_src = fetchFromGitHub
     { owner = "MidAutumnMoon";
       repo = "Numinus";
-      rev = "9176a8721f8dbf3b561c8dbd7887b171d1c837b5";
-      sha256 = "HtPosTxOWQo/KBOiTUVgPsfs1+hLIBBi8Xlkg85UhHw=";
+      rev = "6cef5d2629365a54971544d1dd8c5688bfd1804c";
+      sha256 = "6FzPzq9xEjKLRE4FUgSJtqGgKtRCO6ZUrr9okO2TxH0=";
     };
 
-  combined_configs = runCommandNoCC "numinus-conf" {}
+  basic_configs = runCommandNoCC "numinus-conf" {}
     ''
       for file in ${numinus_src}/startup/*.vim
       do
@@ -34,7 +34,7 @@ neovim-numinus.override {
       let mapleader = " "
       let maplocalleader = ",,"
 
-      ${builtins.readFile combined_configs}
+      source ${basic_configs}
     '';
 
 }
