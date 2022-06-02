@@ -3,10 +3,10 @@
 let
 
   rev =
-    "c9b96077d914fadb7242966a1fbb64746086a90e";
+    "82ca0f76f2e18f242db742991596eb509ce49cc1";
 
   sha256 =
-    "sha256-LkdX/OAr/DViYWX+2dIAICc8LMaJ+OVvRglzjNwmPhY=";
+    "sha256-j+Pg64Y5sxcjMtUkeM4Bjz8XRZiHGRcxhhjWZSV7aB0=";
 
   zuoRoot =
     "racket/src/zuo";
@@ -22,7 +22,8 @@ stdenv.mkDerivation ( drvSelf: {
     { inherit rev sha256;
       owner = "racket";
       repo = "racket";
-      sparseCheckout = zuoRoot;
+      sparseCheckout =
+        zuoRoot;
     };
 
   # Is there an alternative method?
