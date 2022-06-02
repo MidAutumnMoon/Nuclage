@@ -21,6 +21,10 @@ in
   prime-offload =
     callPackage ./utils/prime-offload { };
 
+  # TODO: rewrite an alternative
+  git-crypt =
+    callPackage ./utils/git/git-crypt { inherit (prev) git-crypt; };
+
 
 
   #
