@@ -13,15 +13,20 @@ let
   numinus_src = fetchFromGitHub
     { owner = "MidAutumnMoon";
       repo = "Numinus";
-      rev = "6cef5d2629365a54971544d1dd8c5688bfd1804c";
-      sha256 = "6FzPzq9xEjKLRE4FUgSJtqGgKtRCO6ZUrr9okO2TxH0=";
+      rev = "4b2e13d356cfbcdac23d6fa3e9c7d88adc761874";
+      sha256 = "SOhB1jVziANOlCEv5wlqulK6BQHxuh3iWL7grtFx0XI=";
     };
 
   basic_configs = runCommandNoCC "numinus-conf" {}
     ''
-      for file in ${numinus_src}/startup/*.vim
-      do
-        cat "$file" >> "$out"
+      mkdir -p "$out"
+
+      for file in ${numinus_src}/startup/*.vim; do
+        cat "$file" >> "$out/conf.vim"
+      done
+
+      for file in ${numinus_src}/startup/*.lua; do
+        cat "$file" >> "$out/conf.lua"
       done
     '';
 
@@ -34,7 +39,11 @@ neovim-numinus.override {
       let mapleader = " "
       let maplocalleader = ",,"
 
-      source ${basic_configs}
+      let g:do_filetype_lua = 1
+      let g:did_load_filetypes = 0
+
+      source ${basic_configs}/conf.vim
+      source ${basic_configs}/conf.lua
     '';
 
 }
