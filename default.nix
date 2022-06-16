@@ -38,12 +38,14 @@ in
     callPackage ./editor/neovim/numinus/static-conf.nix {  };
 
 
+
   #
   # Languages: a monkey with a typewriter can do express better
   #
 
   zuo =
     callPackage ./languages/zuo { };
+
 
 
   #
@@ -56,8 +58,18 @@ in
 
 
   #
+  # Shells: efficient because most GUIs are stupid
+  #
+
+  fishPlugins =
+    callPackage ./shell/fish/plugins { inherit (prev) fishPlugins; };
+
+
+
+  #
   # Fonts: there's no symbol more beautiful than a whitespace
   #
+
   comic-mono =
     callPackage ./fonts/comic-mono { };
 
