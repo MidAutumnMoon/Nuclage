@@ -226,8 +226,8 @@ pref( 'browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features', fals
 lockPref( 'privacy.userContext.enabled', true );
 
 // will prevent from logging into Google
-pref( 'general.useragent.override',
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36' );
+// pref( 'general.useragent.override',
+//   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36' );
 
 pref( 'font.system.whitelist', '' );
 
