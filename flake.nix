@@ -15,12 +15,6 @@
 
       # MidAutumnMoon's 1p overlays
 
-      Opah =
-        { url = "github:MidAutumnMoon/Opah";
-          inputs.nixpkgs.follows = "nixpkgs";
-          inputs.nulib.follows = "nulib";
-        };
-
     };
 
 
@@ -50,10 +44,7 @@
       # ...combined altogether...
 
       totalOverlays = with flake;
-        [
-          Opah.overlay
-        ]
-          ++ (builtins.attrValues self.overlays);
+        (builtins.attrValues self.overlays);
 
 
       # ...and also be able to build some of them...
