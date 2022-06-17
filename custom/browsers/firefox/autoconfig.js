@@ -36,7 +36,7 @@ pref( 'media.hardware-video-decoding.force-enabled', true );
 pref( 'network.dnsCacheEntries', 800 );
 pref( 'network.http.max-connections', 900 );
 pref( 'network.http.max-persistent-connections-per-proxy',  32 );
-pref( 'network.http.max-persistent-connections-per-server', 8 );
+pref( 'network.http.max-persistent-connections-per-server', 16 );
 pref( 'network.http.request.max-start-delay', 0 );
 
 pref( 'browser.sessionhistory.max_entries', 12 );
@@ -213,8 +213,6 @@ pref( 'browser.search.geoip.url',   '' );
 
 pref( 'javascript.use_us_english_locale', true );
 pref( 'javascript.options.asmjs',         false );
-
-pref( 'browser.display.use_document_fonts', 0 );
 
 pref( 'extensions.getAddons.cache.enabled', false );
 
