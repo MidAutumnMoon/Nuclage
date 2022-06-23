@@ -1,35 +1,12 @@
 {
   "nodes": {
-    "Opah": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nulib": [
-          "nulib"
-        ]
-      },
-      "locked": {
-        "lastModified": 1648731458,
-        "narHash": "sha256-ZPVK48QcAu8y1UlIWYpVExzCZtusvL25Zm/cLR3+6G0=",
-        "owner": "MidAutumnMoon",
-        "repo": "Opah",
-        "rev": "98827935509e92b969a3cbd33ccc81f8ce7dfcdc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "MidAutumnMoon",
-        "repo": "Opah",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1655385037,
-        "narHash": "sha256-W0vg1Tsaw0yScZYdUvsx9TSZIG/XXtboc9w+BZsSr44=",
+        "lastModified": 1655967145,
+        "narHash": "sha256-ViPJ2Dit65OAiXwxmJXMre7e5XoMY6nuV28aC6BiGzw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "01e4d1a67f6062a6c59046dbc4461659ccff8031",
+        "rev": "e5bb97751cbc401d769e3a1962f7cd05cf97e08a",
         "type": "github"
       },
       "original": {
@@ -41,11 +18,11 @@
     },
     "nulib": {
       "locked": {
-        "lastModified": 1655003145,
+        "lastModified": 1655608584,
         "narHash": "sha256-ceRJLg017JzB7XgTWnJVvhLJuenF8jY97mHBVHR63qY=",
         "owner": "MidAutumnMoon",
         "repo": "Nulib",
-        "rev": "a358505626617dfac8d52b48c46d80d498c13533",
+        "rev": "344b1bcc65c9d943dabdc01c2373ac1e8ca32682",
         "type": "github"
       },
       "original": {
@@ -56,7 +33,6 @@
     },
     "root": {
       "inputs": {
-        "Opah": "Opah",
         "nixpkgs": "nixpkgs",
         "nulib": "nulib"
       }

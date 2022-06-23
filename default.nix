@@ -13,15 +13,14 @@ in
   #
 
   k380-function-key-conf =
-    callPackage ./utils/keyboard/k380-function-key-conf { };
+    callPackage ./utils/hardware/keyboard/k380-function-key-conf { };
 
   k380-auto-fn-udev =
-    callPackage ./utils/keyboard/k380-auto-fn-udev { };
+    callPackage ./utils/hardware/keyboard/k380-auto-fn-udev { };
 
   prime-offload =
-    callPackage ./utils/prime-offload { };
+    callPackage ./utils/scripts/prime-offload { };
 
-  # TODO: rewrite an alternative
   git-crypt =
     callPackage ./utils/git/git-crypt { inherit (prev) git-crypt; };
 
