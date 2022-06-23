@@ -12,17 +12,28 @@ in
   # Utils: tools that nobody cares about
   #
 
-  k380-function-key-conf =
-    callPackage ./utils/hardware/keyboard/k380-function-key-conf { };
+    # Hardwares
 
-  k380-auto-fn-udev =
-    callPackage ./utils/hardware/keyboard/k380-auto-fn-udev { };
+    k380-function-key-conf =
+      callPackage ./utils/hardware/keyboard/k380-function-key-conf { };
 
-  prime-offload =
-    callPackage ./utils/scripts/prime-offload { };
+    k380-auto-fn-udev =
+      callPackage ./utils/hardware/keyboard/k380-auto-fn-udev { };
 
-  git-crypt =
-    callPackage ./utils/git/git-crypt { inherit (prev) git-crypt; };
+    # Some scripts
+
+    prime-offload =
+      callPackage ./utils/scripts/prime-offload { };
+
+    # Networking
+
+    shadowsocks-rust =
+      callPackage ./utils/network/shadowsocks-rust {  };
+
+    # Something else
+
+    git-crypt =
+      callPackage ./utils/git/git-crypt { inherit (prev) git-crypt; };
 
 
 
