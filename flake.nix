@@ -47,9 +47,10 @@
         (builtins.attrValues self.overlays);
 
 
-      # ...and also be able to build some of them...
+      # ...may do some testings to them...
 
-      packages = pkgsForSystem lib.id;
+      packages =
+        pkgsForSystem lib.id;
     };
 
 }
