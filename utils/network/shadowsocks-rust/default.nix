@@ -43,7 +43,6 @@ rustPlatform.buildRustPackage rec {
     [ "local"
       "server"
       "trust-dns"
-      "dns-over-https"
       "local-http"
       "rpmalloc"
       "multi-threaded"
