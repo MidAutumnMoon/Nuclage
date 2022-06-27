@@ -1,4 +1,4 @@
-{ lib, linuxPackages_zen, llvmPackages_14 }:
+{ lib, linuxPackages_zen }:
 
 linuxPackages_zen.extend ( self: super:
 
@@ -40,25 +40,13 @@ linuxPackages_zen.extend ( self: super:
     # clang-able config to this "innocentKernel".
 
     innocentKernel = super.kernel.override
-      { stdenv =
-          llvmPackages_14.stdenv;
-        argsOverride.structuredExtraConfig =
+      { argsOverride.structuredExtraConfig =
           kernelConfigs;
       };
 
-    awesomeKernel = innocentKernel.overrideAttrs ( oldAttrs:
-      { LLVM = 1;
-        LLVM_IAS = 1;
-        NIX_CFLAGS_COMPILE =
+    awesomeKernel = innocentKernel.overrideDerivation ( oldDrv:
+      { NIX_CFLAGS_COMPILE =
           "-march=x86-64-v3 -mtune=znver2";
-
-        nativeBuildInputs =
-            oldAttrs.nativeBuildInputs
-          ++
-            [ llvmPackages_14.bintools ];
-
-        inherit (oldAttrs)
-          passthru;
       } );
 
   in
