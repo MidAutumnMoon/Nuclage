@@ -14,7 +14,8 @@ with flake.packages."x86_64-linux";
 
   sequential =
     [
-      shadowsocks-rust
+      linuxPackages_zen.kernel
+      linuxPackages_zen.zfs
     ];
 
 
@@ -23,6 +24,7 @@ with flake.packages."x86_64-linux";
 
   parallel =
     [
+      shadowsocks-rust
       git-crypt
       zuo
     ];

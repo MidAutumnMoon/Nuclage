@@ -101,6 +101,8 @@ in
   # Temporary: in another word it's permanent
   #
 
+  linuxPackages_zen =
+    callPackage ./custom/kernel/zen { inherit (prev) linuxPackages_zen; };
 
 
   #
