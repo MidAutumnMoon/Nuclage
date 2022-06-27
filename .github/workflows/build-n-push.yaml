@@ -43,7 +43,7 @@ jobs:
                     -build-flags '--print-build-logs'
             - name: "Cleanup"
               run: |
-                  nix-collect-garbage -d
+                  nix store gc --verbose
 
 
     builds-sequential:
@@ -66,8 +66,34 @@ jobs:
             - name: "Build"
               run: |
                   nix flake update
-                  fish _scripts/seq-build.fish workflow-builds.nix sequential
+                  fish _scripts/seq-build.fish true workflow-builds.nix sequential
             - name: "Cleanup"
               run: |
-                  nix-collect-garbage -d
+                  nix store gc --verbose
+
+    builds-kernels:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: cachix/install-nix-action@v17
+              with:
+                  nix_path: "nixpkgs=channel:nixpkgs-unstable"
+            - name: "Install tools"
+              run: |
+                nix-env -f '<nixpkgs>' -iA nix-build-uncached fish
+            - uses: cachix/cachix-action@v10
+              with:
+                  name: "nuirrce"
+                  authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+                  cachixArgs: "-j8 -c5"
+            - uses: actions/checkout@v3
+              with:
+                  ref: "master"
+            - name: "Build"
+              continue-on-error: false
+              run: |
+                  nix flake update
+                  fish _scripts/seq-build.fish false workflow-builds.nix kernels-modules
+            - name: "Cleanup"
+              run: |
+                  nix store gc --verbose
 

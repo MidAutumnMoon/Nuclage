@@ -3,16 +3,24 @@
 #
 # Arguments:
 #
-# - $1: the file contains an attrset
-# - $2: a name in that attrset which contains a list of drvs
+# - $1: true/false: wether continue building on error
+# - $2: the file contains an attrset
+# - $3: a name in that attrset which contains a list of drvs
 #
 
-set --local AttrsetFile "$(path resolve "$argv[1]")"
-set --local DrvListName "$argv[2]"
+set --local IgnoreError "$argv[1]"
+set --local AttrsetFile "$(path resolve "$argv[2]")"
+set --local DrvListName "$argv[3]"
 
-test "$AttrsetFile" != "" && test "$DrvListName" != ""
-    or begin
+test (count $argv) != 3
+    and begin
         echo "Wrong number of arguments."
+        exit 1
+    end
+
+test "$AttrsetFile" = "" || test "$DrvListName" = ""
+    and begin
+        echo "Invalid arguments."
         exit 1
     end
 
@@ -51,7 +59,14 @@ test "$DrvListLength" = 0
 
 for index in (seq 1 "$DrvListLength")
     command nix-build-uncached \
-        --expr "with import <nixpkgs> {}; lib.last ( lib.take "$index" (import \"$AttrsetFile\").\"$DrvListName\"  )" \
-        --out-link "result-seq-$index" \
-        -build-flags '--print-build-logs'
+            --expr "with import <nixpkgs> {}; lib.last ( lib.take "$index" (import \"$AttrsetFile\").\"$DrvListName\"  )" \
+            --out-link "result-seq-$index" \
+            -build-flags '--print-build-logs'
+    test "$status" -gt 0 && test "$IgnoreError" != "true"
+        and begin
+            echo "Built failed and cannot be ignored."
+            exit 1
+        end
 end
+
+echo "All built."

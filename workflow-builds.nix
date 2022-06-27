@@ -14,13 +14,12 @@ with flake.packages."x86_64-linux";
 
   kernels-modules =
     [
-      linuxPackages_zen.kernel
-      linuxPackages_zen.zfs
+      linuxPackages_zen-teapot.kernel
+      linuxPackages_zen-teapot.zfs
     ];
 
   sequential =
-    [
-    ];
+    [ ];
 
 
   # Small and lightweight packages,

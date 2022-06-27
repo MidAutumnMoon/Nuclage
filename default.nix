@@ -95,14 +95,14 @@ in
   firefox-teapot =
     callPackage ./custom/browsers/firefox { };
 
+  linuxPackages_zen-teapot =
+    callPackage ./custom/kernel/zen { inherit (prev) linuxPackages_zen; };
+
 
 
   #
   # Temporary: in another word it's permanent
   #
-
-  linuxPackages_zen =
-    callPackage ./custom/kernel/zen { inherit (prev) linuxPackages_zen; };
 
 
   #
