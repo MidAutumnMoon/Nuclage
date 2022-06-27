@@ -13,8 +13,8 @@ let
   numinus_src = fetchFromGitHub
     { owner = "MidAutumnMoon";
       repo = "Numinus";
-      rev = "4b2e13d356cfbcdac23d6fa3e9c7d88adc761874";
-      sha256 = "SOhB1jVziANOlCEv5wlqulK6BQHxuh3iWL7grtFx0XI=";
+      rev = "03190f16d3523e4e8d1c3b13d590e38b40745bf7";
+      sha256 = "sha256-nLgJCUw5qn3JqiKxCwz8MwOGmuy2/D5aswlIHJyNV7w=";
     };
 
   basic_configs = runCommandNoCC "numinus-conf" {}
@@ -37,7 +37,7 @@ neovim-numinus.override {
   customRC =
     ''
       let mapleader = " "
-      let maplocalleader = ",,"
+      let maplocalleader = "\\"
 
       let g:do_filetype_lua = 1
       let g:did_load_filetypes = 0
