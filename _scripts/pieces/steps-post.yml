@@ -1,0 +1,4 @@
+- name: "Cleanup"
+  if: always()
+  run: |
+      nix store gc --verbose

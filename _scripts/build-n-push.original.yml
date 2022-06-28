@@ -1,0 +1,99 @@
+name: "Build & Push (to Cachix)"
+on:
+    workflow_dispatch:
+    push:
+    schedule:
+        - cron: '0 1 * * *'
+jobs:
+    builds-parallel:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                ref: "master"
+            - uses: cachix/install-nix-action@v17
+              with:
+                nix_path: "nixpkgs=channel:nixpkgs-unstable"
+            - uses: cachix/cachix-action@v10
+              with:
+                name: "nuirrce"
+                authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+                cachixArgs: "-j8 -c5"
+            - name: "Install tools"
+              run: |
+                nix-env -f '<nixpkgs>' -iA 'nix-build-uncached' 'fish'
+            - name: "Change TMPDIR for nix daemon"
+              run: |
+                fish _scripts/set-tmpdir.fish
+            - name: "Update flake"
+              run: |
+                nix flake update
+            - name: "Build"
+              run: |
+                nix-build-uncached workflow-builds.nix \
+                    -A parallel \
+                    -build-flags '--print-build-logs'
+            - name: "Cleanup"
+              if: always()
+              run: |
+                nix store gc --verbose
+    builds-sequential:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                ref: "master"
+            - uses: cachix/install-nix-action@v17
+              with:
+                nix_path: "nixpkgs=channel:nixpkgs-unstable"
+            - uses: cachix/cachix-action@v10
+              with:
+                name: "nuirrce"
+                authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+                cachixArgs: "-j8 -c5"
+            - name: "Install tools"
+              run: |
+                nix-env -f '<nixpkgs>' -iA 'nix-build-uncached' 'fish'
+            - name: "Change TMPDIR for nix daemon"
+              run: |
+                fish _scripts/set-tmpdir.fish
+            - name: "Update flake"
+              run: |
+                nix flake update
+            - name: "Build"
+              run: |
+                fish _scripts/seq-build.fish true workflow-builds.nix sequential
+            - name: "Cleanup"
+              if: always()
+              run: |
+                nix store gc --verbose
+    builds-kernels:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                ref: "master"
+            - uses: cachix/install-nix-action@v17
+              with:
+                nix_path: "nixpkgs=channel:nixpkgs-unstable"
+            - uses: cachix/cachix-action@v10
+              with:
+                name: "nuirrce"
+                authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+                cachixArgs: "-j8 -c5"
+            - name: "Install tools"
+              run: |
+                nix-env -f '<nixpkgs>' -iA 'nix-build-uncached' 'fish'
+            - name: "Change TMPDIR for nix daemon"
+              run: |
+                fish _scripts/set-tmpdir.fish
+            - name: "Update flake"
+              run: |
+                nix flake update
+            - name: "Build"
+              run: |
+                fish _scripts/seq-build.fish false workflow-builds.nix kernels-modules
+            - name: "Cleanup"
+              if: always()
+              run: |
+                nix store gc --verbose
