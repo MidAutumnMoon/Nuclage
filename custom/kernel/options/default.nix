@@ -89,7 +89,6 @@ in
     BT_HCIBTUSB_MTK = forceNo;
     BT_HCIVHCI = no;
     BT_HCIBTUSB_RTL = no;
-    BT_HCIBTSDIO = no;
     BT_MRVL = no;
     BT_HCIBFUSB = no;
     BT_HCIUART = forceNo;
@@ -97,7 +96,6 @@ in
     BT_HCIUART_SERDEV = forceOptionNo;
     BT_QCA = forceOptionNo;
     BT_ATH3K = no;
-    BT_MTKSDIO = no;
     BT_MTKUART = no;
     BT_VIRTIO = no;
     BT_HCIBPA10X = no;
@@ -115,6 +113,14 @@ in
   GREYBUS = no;
   STAGING = forceNo;
   HSI = no;
+  FW_CFG_SYSFS = no;
+  RC_CORE = forceNo;
+  LIRC = forceOptionNo;
+  RC_MAP = forceOptionNo;
+  MMC = no; #?
+  MMC_BLOCK_MINORS = mkForce (option (freeform "32"));
+  MEMSTICK = no;
+  AUXDISPLAY = forceNo;
 
     # SCSI
     SCSI_PROC_FS = no;
@@ -176,19 +182,272 @@ in
     SENSORS_APPLESMC = no;
     SENSORS_ASB100 = no;
     SENSORS_ASPEED = no;
+    SENSORS_ATXP1 = no;
+    SENSORS_CORSAIR_CPRO = no;
+    SENSORS_CORSAIR_PSU = no;
+    SENSORS_DRIVETEMP = no;
+    SENSORS_DS620 = no;
+    SENSORS_DS1621 = no;
+    SENSORS_DELL_SMM = no;
+    SENSORS_I5K_AMB = no;
+    SENSORS_F71805F = no;
+    SENSORS_F71882FG = no;
+    SENSORS_F75375S = no;
+    SENSORS_MC13783_ADC = no;
+    SENSORS_FSCHMD = no;
+    SENSORS_FTSTEUTATES = no;
+    SENSORS_GL518SM = no;
+    SENSORS_GL520SM = no;
+    SENSORS_G760A = no;
+    SENSORS_G762 = no;
+    SENSORS_HIH6130 = no;
+    SENSORS_I5500 = no;
+    SENSORS_CORETEMP = no;
+    SENSORS_IT87 = no;
+    SENSORS_JC42 = no;
+    SENSORS_POWR1220 = no;
+    SENSORS_LINEAGE = no;
+    SENSORS_LTC2945 = no;
+    SENSORS_LTC2947_I2C = no;
+    SENSORS_LTC2947_SPI = no;
+    SENSORS_LTC2990 = no;
+    SENSORS_LTC2992 = no;
+    SENSORS_LTC4151 = no;
+    SENSORS_LTC4215 = no;
+    SENSORS_LTC4222 = no;
+    SENSORS_LTC4245 = no;
+    SENSORS_LTC4260 = no;
+    SENSORS_LTC4261 = no;
+    SENSORS_MAX1111 = no;
+    SENSORS_MAX127 = no;
+    SENSORS_MAX16065 = no;
+    SENSORS_MAX1619 = no;
+    SENSORS_MAX1668 = no;
+    SENSORS_MAX197 = no;
+    SENSORS_MAX31722 = no;
+    SENSORS_MAX31730 = no;
+    SENSORS_MAX6620 = no;
+    SENSORS_MAX6621 = no;
+    SENSORS_MAX6639 = no;
+    SENSORS_MAX6642 = no;
+    SENSORS_MAX6650 = no;
+    SENSORS_MAX6697 = no;
+    SENSORS_MAX31790 = no;
+    SENSORS_MCP3021 = no;
+    SENSORS_TC654 = no;
+    SENSORS_TPS23861 = no;
+    SENSORS_MENF21BMC_HWMON = no;
+    SENSORS_MR75203 = no;
+    SENSORS_ADCXX = no;
+    SENSORS_LM63 = no;
+    SENSORS_LM70 = no;
+    SENSORS_LM73 = no;
+    SENSORS_LM75 = no;
+    SENSORS_LM77 = no;
+    SENSORS_LM78 = no;
+    SENSORS_LM80 = no;
+    SENSORS_LM83 = no;
+    SENSORS_LM85 = no;
+    SENSORS_LM87 = no;
+    SENSORS_LM90 = no;
+    SENSORS_LM92 = no;
+    SENSORS_LM93 = no;
+    SENSORS_LM95234 = no;
+    SENSORS_LM95241 = no;
+    SENSORS_LM95245 = no;
+    SENSORS_AD7414 = no;
+    SENSORS_PC87360 = no;
+    SENSORS_PC87427 = no;
+    SENSORS_NCT6683 = no;
+    SENSORS_NCT6775 = no;
+    SENSORS_NCT7802 = no;
+    SENSORS_NCT7904 = no;
+    SENSORS_NPCM7XX = no;
+    SENSORS_NZXT_KRAKEN2 = no;
+    SENSORS_NZXT_SMART2 = no;
+    SENSORS_PCF8591 = no;
+    SENSORS_PECI_CPUTEMP = no;
+    SENSORS_PECI_DIMMTEMP = no;
+    PMBUS = no;
+    SENSORS_SBTSI = no;
+    SENSORS_SBRMI = no;
+    SENSORS_SHT15 = no;
+    SENSORS_SHT21 = no;
+    SENSORS_SHT3x = no;
+    SENSORS_SHT4x = no;
+    SENSORS_SHTC1 = no;
+    SENSORS_SIS5595 = no;
+    SENSORS_SY7636A = no;
+    SENSORS_DME1737 = no;
+    SENSORS_EMC1403 = no;
+    SENSORS_EMC2103 = no;
+    SENSORS_EMC6W201 = no;
+    SENSORS_SMSC47M1 = no;
+    SENSORS_SMSC47M192 = no;
+    SENSORS_SMSC47B397 = no;
+    SENSORS_SCH5627 = no;
+    SENSORS_SCH5636 = no;
+    SENSORS_STTS751 = no;
+    SENSORS_SMM665 = no;
+    SENSORS_ADC128D818 = no;
+    SENSORS_ADS7828 = no;
+    SENSORS_ADS7871 = no;
+    SENSORS_AMC6821 = no;
+    SENSORS_INA209 = no;
+    SENSORS_INA2XX = no;
+    SENSORS_INA238 = no;
+    SENSORS_INA3221 = no;
+    SENSORS_TC74 = no;
+    SENSORS_THMC50 = no;
+    SENSORS_TMP102 = no;
+    SENSORS_TMP103 = no;
+    SENSORS_TMP108 = no;
+    SENSORS_TMP401 = no;
+    SENSORS_TMP421 = no;
+    SENSORS_TMP464 = no;
+    SENSORS_TMP513 = no;
+    SENSORS_VIA_CPUTEMP = no;
+    SENSORS_VIA686A = no;
+    SENSORS_VT1211 = no;
+    SENSORS_VT8231 = no;
+    SENSORS_W83773G = no;
+    SENSORS_W83781D = no;
+    SENSORS_W83791D = no;
+    SENSORS_W83792D = no;
+    SENSORS_W83793 = no;
+    SENSORS_W83795 = no;
+    SENSORS_W83L785TS = no;
+    SENSORS_W83L786NG = no;
+    SENSORS_W83627HF = no;
+    SENSORS_W83627EHF = no;
+    SENSORS_XGENE = no;
+    SENSORS_INTEL_M10_BMC_HWMON = no;
+    SENSORS_ASUS_EC = no;
+
+    # Power supply
+    #:continue
+    PDA_POWER = no;
+    IP5XXX_POWER = no;
+    TEST_POWER = no;
+    CHARGER_LTC4162L = no;
+    CHARGER_ADP5061 = no;
+    CHARGER_MAX14577 = no;
+    CHARGER_MAX77693 = no;
+    CHARGER_MAX77976 = no;
+    CHARGER_MT6360 = no;
+    CHARGER_BQ2415X = no;
+    CHARGER_BQ24190 = no;
+    CHARGER_BQ24257 = no;
+    CHARGER_BQ24735 = no;
+    CHARGER_BQ2515X = no;
+    CHARGER_BQ25890 = no;
+    CHARGER_BQ25980 = no;
+    CHARGER_BQ256XX = no;
+    CHARGER_SMB347 = no;
+    CHARGER_LT3651 = no;
 
     # Input devices
+    #:continue
     MOUSE_PS2_VMMOUSE = forceOptionNo;
 
-    # # Mutlimedia
-    # MEDIA_CAMERA_SUPPORT = forceOptionNo;
-    # MEDIA_ANALOG_TV_SUPPORT = forceOptionNo;
-    # MEDIA_DIGITAL_TV_SUPPORT = forceOptionNo;
-    # MEDIA_CONTROLLER = forceOptionNo;
-    # MEDIA_ATTACH = mkForce (option yes);
-    # VIDEO_STK1160_COMMON = forceOptionNo;
+    # Mutlimedia
+    MEDIA_SUPPORT = forceNo;
+    MEDIA_CAMERA_SUPPORT = forceOptionNo;
+    MEDIA_ANALOG_TV_SUPPORT = forceOptionNo;
+    MEDIA_DIGITAL_TV_SUPPORT = forceOptionNo;
+    MEDIA_CONTROLLER = forceOptionNo;
+    MEDIA_ATTACH = forceOptionNo;
+    MEDIA_PCI_SUPPORT = forceOptionNo;
+    MEDIA_USB_SUPPORT = forceOptionNo;
+    VIDEO_STK1160_COMMON = forceOptionNo;
+
+    # USB
+    USB_MON = no;
+    USB_C67X00_HCD = no;
+    USB_OXU210HP_HCD = no;
+    USB_MDC800 = no;
+    USB_ISP116X_HCD = no;
+    USB_FOTG210_HCD = no;
+    USB_MAX3421_HCD = no;
+    USB_SL811_HCD = no;
+    USB_R8A66597_HCD = no;
+    USB_HCD_BCMA = no;
+    USB_HCD_SSB = no;
+    USB_ACM = no;
+    USB_PRINTER = no;
+    USB_TMC = no;
+    USB_STORAGE_REALTEK = no;
+    USB_STORAGE_DATAFAB = no;
+    USB_STORAGE_FREECOM = no;
+    USB_STORAGE_ISD200 = no;
+    USB_STORAGE_USBAT = no;
+    USB_STORAGE_JUMPSHOT = no;
+    USB_STORAGE_SDDR09 = no;
+    USB_STORAGE_SDDR55 = no;
+    USB_STORAGE_ALAUDA = no;
+    USB_STORAGE_ONETOUCH = no;
+    USB_STORAGE_KARMA = no;
+    USB_STORAGE_CYPRESS_ATACB = no;
+    USB_STORAGE_ENE_UB6250 = no;
+    USB_MICROTEK = no;
+    USBIP_CORE = no;
+    USB_CDNS_SUPPORT = no;
+    USB_MUSB_HDRC = no;
+    USB_DWC3 = no;
+    USB_DWC2 = no;
+    USB_CHIPIDEA = no;
+    USB_ISP1760 = no;
+    USB_SERIAL = no;
+    USB_SERIAL_GENERIC = forceOptionNo;
+      # Misc drivers
+      USB_EMI62 = no;
+      USB_EMI26 = no;
+      USB_ADUTUX = no;
+      USB_SEVSEG = no;
+      USB_LEGOTOWER = no;
+      USB_LCD = no;
+      USB_CYPRESS_CY7C63 = no;
+      USB_CYTHERM = no;
+      USB_IDMOUSE = no;
+      USB_FTDI_ELAN = no;
+      USB_APPLEDISPLAY = no;
+      APPLE_MFI_FASTCHARGE = no;
+      USB_SISUSBVGA = no;
+      USB_LD = no;
+      USB_TRANCEVIBRATOR = no;
+      USB_IOWARRIOR = no;
+      USB_TEST = no;
+      USB_EHSET_TEST_FIXTURE = no;
+      USB_ISIGHTFW = no;
+      USB_YUREX = no;
+      USB_EZUSB_FX2 = no;
+      USB_HUB_USB251XB = no;
+      USB_HSIC_USB3503 = no;
+      USB_HSIC_USB4604 = no;
+      USB_LINK_LAYER_TEST = no;
+      USB_CHAOSKEY = no;
+      NOP_USB_XCEIV = no;
+      USB_GPIO_VBUS = no;
+      TAHVO_USB = no;
+      USB_ISP1301 = no;
+    USB_FOTG210_UDC = no;
+    USB_GR_UDC = no;
+    USB_R8A66597 = no;
+    USB_PXA27X = no;
+    USB_MV_UDC = no;
+    USB_MV_U3D = no;
+    USB_M66592 = no;
+    USB_BDC_UDC = no;
+    USB_AMD5536UDC = no;
+    USB_NET2272 = no;
+    USB_NET2280 = no;
+    USB_GOKU = no;
+    USB_EG20T = no;
+    USB_MAX3420_UDC = no;
+    USB_DUMMY_HCD = no;
 
     # Graphics
+    #:continue
     DRM_GUD = no;
     DRM_I915 = no;
     DRM_I915_GVT = forceOptionNo;
@@ -281,7 +540,74 @@ in
     SIEMENS_SIMATIC_IPC = no;
 
     # Sound
+    #:continue
     SND_SOC_INTEL_SOUNDWIRE_SOF_MACH = forceOptionNo;
+    SND_VIRMIDI = no;
+      # HD audio
+      SND_HDA_SCODEC_CS35L41_I2C = no;
+      SND_HDA_SCODEC_CS35L41_SPI = no;
+      SND_HDA_CODEC_ANALOG = no;
+      SND_HDA_CODEC_SIGMATEL = no;
+      SND_HDA_CODEC_VIA = no;
+      SND_HDA_CODEC_CIRRUS = no;
+      SND_HDA_CODEC_CS8409 = no;
+      SND_HDA_CODEC_CONEXANT = no;
+      SND_HDA_CODEC_CA0110 = no;
+      SND_HDA_CODEC_CA0132 = no;
+      SND_HDA_CODEC_CMEDIA = no;
+      SND_HDA_CODEC_SI3054 = no;
+      # SoC
+      SND_SOC_ADI = no;
+      SND_ATMEL_SOC = no;
+      SND_BCM63XX_I2S_WHISTLER = no;
+      SND_DESIGNWARE_I2S = no;
+      SND_SOC_FSL_ASRC = no;
+      SND_SOC_FSL_SAI = no;
+      SND_SOC_FSL_AUDMIX = no;
+      SND_SOC_FSL_SSI = no;
+      SND_SOC_FSL_SPDIF = no;
+      SND_SOC_FSL_ESAI = no;
+      SND_SOC_FSL_MICFIL = no;
+      SND_SOC_FSL_XCVR = no;
+      SND_SOC_FSL_RPMSG = no;
+      SND_SOC_IMX_AUDMUX = no;
+      SND_I2S_HI6210_I2S = no;
+      SND_SOC_INTEL_SST_TOPLEVEL = no;
+      SND_SOC_INTEL_AVS = no;
+      SND_SOC_MTK_BTCVSD = no;
+      SND_SOC_SOF_INTEL_TOPLEVEL = forceNo;
+      SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES = forceOptionNo;
+      SND_SOC_SOF_APOLLOLAKE = forceOptionNo;
+      SND_SOC_SOF_CANNONLAKE = forceOptionNo;
+      SND_SOC_SOF_COFFEELAKE = forceOptionNo;
+      SND_SOC_SOF_COMETLAKE = forceOptionNo;
+      SND_SOC_SOF_ELKHARTLAKE = forceOptionNo;
+      SND_SOC_SOF_GEMINILAKE = forceOptionNo;
+      SND_SOC_SOF_HDA_AUDIO_CODEC = forceOptionNo;
+      SND_SOC_SOF_HDA_LINK = forceOptionNo;
+      SND_SOC_SOF_ICELAKE = forceOptionNo;
+      SND_SOC_SOF_JASPERLAKE = forceOptionNo;
+      SND_SOC_SOF_MERRIFIELD = forceOptionNo;
+      SND_SOC_SOF_TIGERLAKE = forceOptionNo;
+      SND_SOC_XILINX_I2S = no;
+      SND_SOC_XILINX_AUDIO_FORMATTER = no;
+      SND_SOC_XILINX_SPDIF = no;
+      SND_SOC_XTFPGA_I2S = no;
+        # Codec
+        SND_SOC_ADAU1372_I2C = no;
+        SND_SOC_ADAU1372_SPI = no;
+        SND_SOC_ADAU1761_SPI = no;
+        SND_SOC_ADAU7118_HW = no;
+        SND_SOC_ADAU7118_I2C = no;
+        SND_SOC_AK4104 = no;
+        SND_SOC_AK4118 = no;
+        SND_SOC_AK4375 = no;
+        SND_SOC_AK4458 = no;
+        SND_SOC_AK4554 = no;
+        SND_SOC_AK4613 = no;
+        SND_SOC_AK4642 = no;
+        SND_SOC_AK5386 = no;
+        SND_SOC_AK5558 = no;
 
     # Block devices
     BLK_DEV_FD = no;
@@ -315,7 +641,6 @@ in
     INTEL_TH = no;
     MCB = no;
     FPGA = no;
-    RESET_TI_SYSCON = no;
     SOUNDWIRE = no;
     GNSS = no;
     PARPORT = no;
@@ -411,6 +736,9 @@ in
       USB_RTL8150 = no;
       USB_RTL8152 = no;
       USB_LAN78XX = no;
+      USB_NET_CX82310_ETH = no;
+      USB_ARMLINUX = no;
+      USB_BELKIN = no;
     WAN = forceNo;
     WWAN = no;
       # Wireless LAN
@@ -532,7 +860,6 @@ in
     HID_LED = no;
     HID_LETSKETCH = no;
     HID_MONTEREY = no;
-    HID_MULTITOUCH = no; # touchpad?
     HID_NTI = no;
     HID_NTRIG = no;
     HID_ORTEK = no;
@@ -565,6 +892,21 @@ in
       SND_AU8820 = no;
       SND_AU8830 = no;
 
+    # MTD
+    MTD_HYPERBUS = no;
+    MTD_LPDDR = no;
+    MTD_PMC551 = no;
+    MTD_DATAFLASH = no;
+    MTD_MCHP23K256 = no;
+    MTD_MCHP48L640 = no;
+    MTD_SST25L = no;
+    MTD_MTDRAM = no;
+    MTD_DOCG3 = no;
+    SM_FTL = no;
+    SSFDC = no;
+
+    # H
+
 
   #
   # Filesystems
@@ -578,6 +920,24 @@ in
   NILFS2_FS = no;
   NTFS_FS = no;
   DLM = no;
+  XFS_FS = no;
+  BTRFS_FS = no;
+  BTRFS_FS_POSIX_ACL = forceOptionNo;
+  QFMT_V1 = no;
+  NFS_FS = no;
+  SUNRPC_DEBUG = forceOptionNo;
+  NFSD_V2_ACL = forceOptionNo;
+  NFSD_V3_ACL = forceOptionNo;
+  NFSD_V4 = forceOptionNo;
+  NFSD_V4_SECURITY_LABEL = forceOptionNo;
+  NFS_FSCACHE = forceOptionNo;
+  NFS_SWAP = forceOptionNo;
+  NFS_V3_ACL = forceOptionNo;
+  NFS_V4_1 = forceOptionNo;
+  NFS_V4_2 = forceOptionNo;
+  NFS_V4_SECURITY_LABEL = forceOptionNo;
+  NFSD = no;
+  "9P_FS" = no;
 
     # Network filesystems
     CEPH_FS = no;
