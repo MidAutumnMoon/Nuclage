@@ -32,6 +32,7 @@ linuxPackages_zen.extend ( self: super:
       //
         { ZEN_INTERACTIVE = yes;
           LRU_GEN = yes;
+          LRU_GEN_ENABLED = yes;
         };
 
     # The original plan is to

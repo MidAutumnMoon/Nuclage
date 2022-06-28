@@ -25,9 +25,12 @@
       lib =
         nixpkgs.lib.extend nulib.lib;
 
+      config =
+        { allowUnfree = true; };
+
       pkgsForSystem =
         lib.importNixpkgs {
-          inherit nixpkgs;
+          inherit nixpkgs config;
           overlays = self.totalOverlays;
         };
 

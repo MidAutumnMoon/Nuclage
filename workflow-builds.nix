@@ -14,8 +14,9 @@ with flake.packages."x86_64-linux";
 
   kernels-modules =
     [
-      linuxPackages_zen-teapot.kernel
+      linuxPackages_zen-teapot.kernel.all
       linuxPackages_zen-teapot.zfs
+      linuxPackages_zen-teapot.nvidiaPackages.stable
     ];
 
   sequential =

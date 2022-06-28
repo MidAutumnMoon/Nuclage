@@ -32,12 +32,13 @@ in
   CHROMEOS_PSTORE = forceOptionNo;
 
   KUNIT = no;
+  EXPERT = yes;
 
 
   #
   # Networking
   #
-  # QRTR = no;
+  QRTR = no;
   HSR = no;
   TCP_CONG_BIC = no;
   TCP_CONG_WESTWOOD = no;
@@ -57,7 +58,7 @@ in
   NETLABEL = no;
   IP_DCCP = no;
   IP_DCCP_CCID3 = forceOptionNo;
-  # IP_SCTP = no;
+  IP_SCTP = no;
   RDS = no;
   TIPC = no;
   ATM = no;
@@ -79,6 +80,28 @@ in
   VSOCKETS = no;
   MPLS = no;
   NET_NSH = no;
+  CEPH_LIB = no;
+  NFC = no;
+  CAIF = no;
+  CAN = no;
+    # Bluetooth
+    BT_HCIBTUSB_BCM = no;
+    BT_HCIBTUSB_MTK = forceNo;
+    BT_HCIVHCI = no;
+    BT_HCIBTUSB_RTL = no;
+    BT_HCIBTSDIO = no;
+    BT_MRVL = no;
+    BT_HCIBFUSB = no;
+    BT_HCIUART = forceNo;
+    BT_HCIUART_QCA = forceOptionNo;
+    BT_HCIUART_SERDEV = forceOptionNo;
+    BT_QCA = forceOptionNo;
+    BT_ATH3K = no;
+    BT_MTKSDIO = no;
+    BT_MTKUART = no;
+    BT_VIRTIO = no;
+    BT_HCIBPA10X = no;
+    BT_HCIBCM203X = no;
 
 
   #
@@ -157,13 +180,13 @@ in
     # Input devices
     MOUSE_PS2_VMMOUSE = forceOptionNo;
 
-    # Mutlimedia
-    MEDIA_CAMERA_SUPPORT = forceNo;
-    MEDIA_ANALOG_TV_SUPPORT = forceNo;
-    MEDIA_DIGITAL_TV_SUPPORT = forceNo;
-    MEDIA_CONTROLLER = forceOptionNo;
-    MEDIA_ATTACH = mkForce (option yes);
-    VIDEO_STK1160_COMMON = forceOptionNo;
+    # # Mutlimedia
+    # MEDIA_CAMERA_SUPPORT = forceOptionNo;
+    # MEDIA_ANALOG_TV_SUPPORT = forceOptionNo;
+    # MEDIA_DIGITAL_TV_SUPPORT = forceOptionNo;
+    # MEDIA_CONTROLLER = forceOptionNo;
+    # MEDIA_ATTACH = mkForce (option yes);
+    # VIDEO_STK1160_COMMON = forceOptionNo;
 
     # Graphics
     DRM_GUD = no;
@@ -429,6 +452,119 @@ in
     HID_BETOP_FF = no;
     HID_BIGBEN_FF = no;
     HID_CHERRY = no;
+    INTEL_ISH_HID = no;
+    HID_CHICONY = no;
+    HID_CORSAIR = no;
+    HID_COUGAR = no;
+    HID_MACALLY = no;
+    HID_PRODIKEYS = no;
+    HID_CMEDIA = no;
+    HID_CP2112 = no;
+    HID_CREATIVE_SB0540 = no;
+    HID_CYPRESS = no;
+    HID_DRAGONRISE = no;
+    DRAGONRISE_FF = forceOptionNo;
+    HID_EMS_FF = no;
+    HID_PICOLCD = no;
+    HID_MCP2221 = no;
+    HID_ALPS = no;
+    HID_ZYDACRON = no;
+    HID_ZEROPLUS = no;
+    ZEROPLUS_FF = forceOptionNo;
+    HID_XINMO = no;
+    HID_WIIMOTE = no;
+    HID_WACOM = no;
+    HID_U2FZERO = no;
+    HID_UDRAW_PS3 = no;
+    HID_THRUSTMASTER = no;
+    THRUSTMASTER_FF = forceOptionNo;
+    HID_THINGM = no;
+    HID_TOPSEED = no;
+    HID_TIVO = no;
+    HID_SMARTJOYPLUS = no;
+    SMARTJOYPLUS_FF = forceOptionNo;
+    HID_GREENASIA = no;
+    GREENASIA_FF = forceOptionNo;
+    HID_ELAN = no;
+    HID_ELECOM = no;
+    HID_ELO = no;
+    HID_EZKEY = no;
+    HID_FT260 = no;
+    HID_GEMBIRD = no;
+    HID_GFRM = no;
+    HID_GLORIOUS = no;
+    HID_HOLTEK = no;
+    HOLTEK_FF = forceOptionNo;
+    HID_VIVALDI = no;
+    HID_MAGICMOUSE = no;
+    HID_MALTRON = no;
+    HID_MAYFLASH = no;
+    HID_REDRAGON = no;
+    HID_PLAYSTATION = no;
+    PLAYSTATION_FF = forceOptionNo;
+    HID_SONY = no;
+    SONY_FF = forceOptionNo;
+    HID_MICROSOFT = no;
+    HID_LENOVO = no;
+    HID_PLANTRONICS = no;
+    HID_RMI = no;
+    HID_SUNPLUS = no;
+    HID_STEELSERIES = no;
+    HID_STEAM = no;
+    HID_SPEEDLINK = no;
+    HID_SIGMAMICRO = no;
+    HID_SEMITEK = no;
+    HID_SAMSUNG = no;
+    HID_GT683R = no;
+    HID_KEYTOUCH = no;
+    HID_KYE = no;
+    HID_UCLOGIC = no;
+    HID_WALTOP = no;
+    HID_VIEWSONIC = no;
+    HID_XIAOMI = no;
+    HID_GYRATION = no;
+    HID_ICADE = no;
+    HID_ITE = no;
+    HID_JABRA = no;
+    HID_TWINHAN = no;
+    HID_KENSINGTON = no;
+    HID_LCPOWER = no;
+    HID_LED = no;
+    HID_LETSKETCH = no;
+    HID_MONTEREY = no;
+    HID_MULTITOUCH = no; # touchpad?
+    HID_NTI = no;
+    HID_NTRIG = no;
+    HID_ORTEK = no;
+    HID_PANTHERLORD = no;
+    HID_PENMOUNT = no;
+    HID_PETALYNX = no;
+    HID_RAZER = no;
+    HID_PRIMAX = no;
+    HID_RETRODE = no;
+    HID_ROCCAT = no;
+    HID_SAITEK = no;
+
+    # Sound
+    SND_PCSP = no;
+    SND_AC97_POWER_SAVE = forceNo;
+    SND_MPU401 = no;
+    SND_SERIAL_U16550 = no;
+    SND_MTPAV = no;
+    SND_VIRTIO = no;
+      # PCI sound devices
+      SND_AD1889 = no;
+      SND_ALS300 = no;
+      SND_ALS4000 = no;
+      SND_ALI5451 = no;
+      SND_ASIHPI = no;
+      SND_ATIIXP = no;
+      SND_ATIIXP_MODEM = no;
+      SND_CTXFI = no;
+      SND_AU8810 = no;
+      SND_AU8820 = no;
+      SND_AU8830 = no;
+
 
   #
   # Filesystems
@@ -441,6 +577,7 @@ in
   OCFS2_FS = no;
   NILFS2_FS = no;
   NTFS_FS = no;
+  DLM = no;
 
     # Network filesystems
     CEPH_FS = no;
@@ -489,6 +626,16 @@ in
 
 
   #
+  # Power management & ACPI
+  #
+  INTEL_IDLE = forceOptionNo;
+  X86_INTEL_PSTATE = forceNo;
+  X86_POWERNOW_K8 = no;
+  X86_SPEEDSTEP_CENTRINO = no;
+  X86_P4_CLOCKMOD = no;
+
+
+  #
   # Processor type and features
   #
   HYPERVISOR_GUEST = forceNo;
@@ -496,4 +643,15 @@ in
   KVM_GUEST = forceOptionNo;
   X86_EXTENDED_PLATFORM = no;
   X86_MCE_INTEL = no;
+  MICROCODE_INTEL = forceOptionNo;
+  NR_CPUS = mkForce (freeform "32");
+    # Processor select
+    PROCESSOR_SELECT = yes;
+    CPU_SUP_AMD = yes;
+    CPU_SUP_INTEL = no;
+    CPU_SUP_HYGON = no;
+    CPU_SUP_CENTAUR = no;
+    CPU_SUP_ZHAOXIN = no;
+  X86_SGX = forceOptionNo;
+  X86_SGX_KVM = forceOptionNo;
 }

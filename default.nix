@@ -96,7 +96,7 @@ in
     callPackage ./custom/browsers/firefox { };
 
   linuxPackages_zen-teapot =
-    callPackage ./custom/kernel/zen { inherit (prev) linuxPackages_zen; };
+    callPackage ./custom/kernel/zen {  };
 
 
 
