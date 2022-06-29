@@ -34,6 +34,18 @@ in
   KUNIT = no;
   EXPERT = yes;
 
+  X86_X32_ABI = yes;
+  USELIB = no;
+  PREEMPT_VOLUNTARY = forceNo;
+  PREEMPT = mkForce yes;
+
+  KPROBES = forceNo;
+
+  BLK_SED_OPAL = forceNo;
+  LDM_PARTITION = forceNo;
+
+  KALLSYMS = no;
+
 
   #
   # Networking
@@ -84,6 +96,40 @@ in
   NFC = no;
   CAIF = no;
   CAN = no;
+  NET_PKTGEN = no;
+  DNS_RESOLVER = no;
+  IP_VS = no;
+  IP_VS_PROTO_TCP = forceOptionNo;
+  IP_VS_PROTO_UDP = forceOptionNo;
+  IP_VS_PROTO_ESP = forceOptionNo;
+  IP_VS_PROTO_AH = forceOptionNo;
+  IP_VS_IPV6 = forceOptionNo;
+  NETWORK_SECMARK = no;
+  TCP_MD5SIG = no;
+  NET_IPGRE_DEMUX = no;
+  NET_IPIP = no;
+  IP_MROUTE = no;
+  NET_KEY = no;
+  XFRM_INTERFACE = no;
+  NET_FOU = no;
+  NET_FOU_IP_TUNNELS = forceNo;
+  IPV6_FOU_TUNNEL = forceOptionNo;
+  NET_IPVTI = no;
+  NET_9P = no;
+  RFKILL_GPIO = no;
+  NET_DROP_MONITOR = forceOptionNo;
+  IP_MROUTE_MULTIPLE_TABLES = forceOptionNo;
+    # Netfilter
+    NF_CONNTRACK_AMANDA = no;
+    NF_CONNTRACK_FTP = no;
+    NF_CONNTRACK_H323 = no;
+    NF_CONNTRACK_NETBIOS_NS = no;
+    NF_CONNTRACK_SNMP = no;
+    NF_CONNTRACK_PPTP = no;
+    NF_CONNTRACK_SANE = no;
+    NF_CONNTRACK_SIP = no;
+    NF_CONNTRACK_IRC = no;
+    NF_CONNTRACK_TFTP = no;
     # Bluetooth
     BT_HCIBTUSB_BCM = no;
     BT_HCIBTUSB_MTK = forceNo;
@@ -100,6 +146,35 @@ in
     BT_VIRTIO = no;
     BT_HCIBPA10X = no;
     BT_HCIBCM203X = no;
+    BT_BNEP = no;
+    BT_RFCOMM = no;
+    # QoS
+    NET_SCH_CBQ = no;
+    NET_SCH_HTB = no;
+    NET_SCH_HFSC = no;
+    NET_SCH_PRIO = no;
+    NET_SCH_MULTIQ = no;
+    NET_SCH_RED = no;
+    NET_SCH_SFB = no;
+    NET_SCH_SFQ = no;
+    NET_SCH_TEQL = no;
+    NET_SCH_TBF = no;
+    NET_SCH_CBS = no;
+    NET_SCH_ETF = no;
+    NET_SCH_TAPRIO = no;
+    NET_SCH_GRED = no;
+    NET_SCH_DSMARK = no;
+    NET_SCH_DRR = no;
+    NET_SCH_MQPRIO = no;
+    NET_SCH_SKBPRIO = no;
+    NET_SCH_CHOKE = no;
+    NET_SCH_QFQ = no;
+    NET_SCH_CODEL = no;
+    NET_SCH_FQ_CODEL = no;
+    NET_SCH_CAKE = no;
+    NET_SCH_HHF = no;
+    NET_SCH_PLUG = no;
+    NET_SCH_ETS = no;
 
 
   #
@@ -116,13 +191,32 @@ in
   FW_CFG_SYSFS = no;
   RC_CORE = forceNo;
   LIRC = forceOptionNo;
-  RC_MAP = forceOptionNo;
-  MMC = no; #?
+  MMC = no;
   MMC_BLOCK_MINORS = mkForce (option (freeform "32"));
   MEMSTICK = no;
   AUXDISPLAY = forceNo;
+  RPMSG_QCOM_GLINK_RPM = no;
+  RPMSG_VIRTIO = no;
+  PECI = no;
+  SPMI = no;
+  PTP_1588_CLOCK = no;
+  PPS = no;
+  SSB = no;
+  BCMA = no;
+  VDPA = no;
+  ALTERA_MBOX = no;
+  INTEL_RAPL = forceNo;
+  CXL_BUS = no;
+  W1 = no;
+  VIRTIO_MENU = no;
+  REGULATOR = forceNo;
+  MHI_BUS = no;
+  EDD = no;
+  VFIO = no;
+  VFIO_PCI_VGA = forceOptionNo;
 
     # SCSI
+    #:continue
     SCSI_PROC_FS = no;
     SCSI_LOWLEVEL_PCMCIA = forceOptionNo;
     SCSI_LOWLEVEL = forceNo;
@@ -131,28 +225,313 @@ in
     AIC79XX_DEBUG_ENABLE = forceOptionNo;
     AIC7XXX_DEBUG_ENABLE = forceOptionNo;
     AIC94XX_DEBUG = forceOptionNo;
+    BLK_DEV_SR = no;
+    CHR_DEV_SCH = no;
 
     # Character device
     SERIAL_NONSTANDARD = no;
     NOZOMI = no;
     IPMI_HANDLER = no;
-    IPMB_DEVICE_INTERFACE = no;
     HW_RANDOM_INTEL = no;
     HW_RANDOM_BA431 = no;
     HW_RANDOM_VIA = no;
     HW_RANDOM_VIRTIO = no;
     HW_RANDOM_XIPHERA = no;
+    HW_RANDOM_TIMERIOMEM = no;
+    HW_RANDOM_AMD = no;
     APPLICOM = no;
     MWAVE = no;
     TELCLOCK = no;
     XILLYBUS = no;
     XILLYUSB = no;
+    N_GSM = no;
+    VIRTIO_CONSOLE = no;
+      # Serial driver
+      SERIAL_MAX3100 = no;
+      SERIAL_MAX310X = no;
+      SERIAL_UARTLITE = no;
+      SERIAL_JSM = no;
+      SERIAL_LANTIQ = no;
+      SERIAL_SCCNXP = no;
+      SERIAL_SC16IS7XX = no;
+      SERIAL_ALTERA_JTAGUART = no;
+      SERIAL_ALTERA_UART = no;
+      SERIAL_ARC = no;
+      SERIAL_RP2 = no;
+      SERIAL_FSL_LPUART = no;
+      SERIAL_FSL_LINFLEXUART = no;
+      SERIAL_SPRD = no;
+      SERIAL_8250 = forceNo;
 
     # I2C
+    I2C_MUX_GPIO = no;
+    I2C_MUX_PCA9541 = no;
+    I2C_MUX_LTC4306 = no;
+    I2C_MUX_PCA954x = no;
+    I2C_MUX_REG = no;
+    I2C_MUX_MLXCPLD = no;
+      # SMBus host controller
+      I2C_ALI1535 = no;
+      I2C_ALI1563 = no;
+      I2C_ALI15X3 = no;
+      I2C_AMD756 = no;
+      I2C_AMD8111 = no;
+      I2C_AMD_MP2 = no;
+      I2C_I801 = no;
+      I2C_ISCH = no;
+      I2C_ISMT = no;
+      I2C_NFORCE2 = no;
+      I2C_SIS5595 = no;
+      I2C_SIS630 = no;
+      I2C_SIS96X = no;
+      I2C_VIA = no;
+      I2C_VIAPRO = no;
+    I2C_SCMI = no;
+      # system bus driver
+      I2C_CBUS_GPIO = no;
+      I2C_DESIGNWARE_PLATFORM = module;
+      I2C_EMEV2 = no;
+      I2C_GPIO = no;
+      I2C_OCORES = no;
+      I2C_PCA_PLATFORM = no;
+      I2C_SIMTEC = no;
+      I2C_XILINX = no;
+    I2C_DIOLAN_U2C = no;
+    I2C_CP2615 = no;
+    I2C_ROBOTFUZZ_OSIF = no;
+    I2C_TAOS_EVM = no;
+    I2C_TINY_USB = no;
+    I2C_MLXCPLD = no;
+    I2C_VIRTIO = no;
+
+    # I3C
+    I3C = no;
+
+    # PCI
+    VMD = no;
+    PCI_MESON = no;
+    PCI_SW_SWITCHTEC = no;
+
+    # SPI
+    #:continue
+    SPI_ALTERA = no;
+    SPI_AXI_SPI_ENGINE = no;
+    SPI_CADENCE = no;
+    SPI_NXP_FLEXSPI = no;
+    SPI_GPIO = no;
+    SPI_LANTIQ_SSC = no;
+    SPI_OC_TINY = no;
+    SPI_PXA2XX = no;
+    SPI_ROCKCHIP = no;
+    SPI_SC18IS602 = no;
+    SPI_SIFIVE = no;
+    SPI_MXIC = no;
+    SPI_XCOMM = no;
+    SPI_XILINX = no;
+    SPI_ZYNQMP_GQSPI = no;
+    SPI_MUX = no;
+    SPI_SPIDEV = no;
+    SPI_LOOPBACK_TEST = no;
+    SPI_TLE62X0 = no;
+
+    # Userspace IO
+    #:useless?
+    UIO = no;
+
+    # RTC : Realtime clock
+    RTC_DRV_CMOS = module; # Sure have it
+    RTC_HCTOSYS = yes;
+    RTC_HCTOSYS_DEVICE = freeform "rtc0";
+    RTC_DRV_TEST = no;
+    RTC_DRV_ABB5ZES3 = no;
+    RTC_DRV_ABEOZ9 = no;
+    RTC_DRV_ABX80X = no;
+    RTC_DRV_DS1307 = no;
+    RTC_DRV_DS1374 = no;
+    RTC_DRV_DS1672 = no;
+    RTC_DRV_MAX6900 = no;
+    RTC_DRV_RS5C372 = no;
+    RTC_DRV_ISL1208 = no;
+    RTC_DRV_ISL12022 = no;
+    RTC_DRV_X1205 = no;
+    RTC_DRV_PCF8523 = no;
+    RTC_DRV_PCF85063 = no;
+    RTC_DRV_PCF85363 = no;
+    RTC_DRV_PCF8563 = no;
+    RTC_DRV_PCF8583 = no;
+    RTC_DRV_M41T80 = no;
+    RTC_DRV_BQ32K = no;
+    RTC_DRV_S35390A = no;
+    RTC_DRV_FM3130 = no;
+    RTC_DRV_RX8010 = no;
+    RTC_DRV_RX8581 = no;
+    RTC_DRV_RX8025 = no;
+    RTC_DRV_EM3027 = no;
+    RTC_DRV_RV3028 = no;
+    RTC_DRV_RV3032 = no;
+    RTC_DRV_RV8803 = no;
+    RTC_DRV_SD3078 = no;
+    RTC_DRV_M41T93 = no;
+    RTC_DRV_M41T94 = no;
+    RTC_DRV_DS1302 = no;
+    RTC_DRV_DS1305 = no;
+    RTC_DRV_DS1343 = no;
+    RTC_DRV_DS1347 = no;
+    RTC_DRV_DS1390 = no;
+    RTC_DRV_RX4581 = no;
+    RTC_DRV_RS5C348 = no;
+    RTC_DRV_MAX6902 = no;
+    RTC_DRV_PCF2123 = no;
+    RTC_DRV_MCP795 = no;
+    RTC_DRV_DS3232 = no;
+    RTC_DRV_PCF2127 = no;
+    RTC_DRV_RV3029C2 = no;
+    RTC_DRV_RX6110 = no;
+    RTC_DRV_DS1286 = no;
+    RTC_DRV_DS1511 = no;
+    RTC_DRV_DS1553 = no;
+    RTC_DRV_DS1685_FAMILY = no;
+    RTC_DRV_DS1742 = no;
+    RTC_DRV_DS2404 = no;
+    RTC_DRV_STK17TA8 = no;
+    RTC_DRV_M48T86 = no;
+    RTC_DRV_M48T35 = no;
+    RTC_DRV_M48T59 = no;
+    RTC_DRV_MSM6242 = no;
+    RTC_DRV_BQ4802 = no;
+    RTC_DRV_RP5C01 = no;
+    RTC_DRV_V3020 = no;
+    RTC_DRV_FTRTC010 = no;
+    RTC_DRV_GOLDFISH = no;
+
+    # Common clock
+    LMK04832 = no;
+    COMMON_CLK_MAX9485 = no;
+    COMMON_CLK_SI5341 = no;
+    COMMON_CLK_SI5351 = no;
+    COMMON_CLK_SI544 = no;
+    COMMON_CLK_CDCE706 = no;
+    COMMON_CLK_CS2000_CP = no;
+    XILINX_VCU = no;
 
     # GPIO
-    GPIO_DWAPB = no;
-    GPIO_EXAR = no;
+    #:continue
+      # memory mapped
+      GPIO_GENERIC_PLATFORM = no;
+      GPIO_AMDPT = no;
+      GPIO_MB86S7X = no;
+      GPIO_DWAPB = no;
+      GPIO_VX855 = no;
+      GPIO_AMD_FCH = no;
+      # port mapped
+      GPIO_F7188X = no;
+      GPIO_IT87 = no;
+      GPIO_SCH311X = no;
+      GPIO_WINBOND = no;
+      GPIO_WS16C48 = no;
+      # I2C
+      GPIO_ADP5588 = no;
+      GPIO_MAX7300 = no;
+      GPIO_MAX732X = no;
+      GPIO_PCA953X = no;
+      GPIO_PCA9570 = no;
+      GPIO_PCF857X = no;
+      GPIO_TPIC2810 = no;
+      # PCI
+      GPIO_AMD8111 = no;
+      GPIO_BT8XX = no;
+      GPIO_ML_IOH = no;
+      GPIO_PCI_IDIO_16 = no;
+      GPIO_PCIE_IDIO_24 = no;
+      GPIO_RDC321X = no;
+      # SPI
+      GPIO_MAX3191X = no;
+      GPIO_MAX7301 = no;
+      GPIO_MC33880 = no;
+      GPIO_PISOSR = no;
+      GPIO_XRA1403 = no;
+      # Virtual GPIO
+      GPIO_AGGREGATOR = no;
+      GPIO_MOCKUP = no;
+      GPIO_VIRTIO = no;
+      GPIO_SIM = no;
+
+    # Watchdog
+    SP5100_TCO = module; # laptop is AMD CPU
+    WDAT_WDT = no;
+    XILINX_WATCHDOG = no;
+    ZIIRAVE_WATCHDOG = no;
+    CADENCE_WATCHDOG = no;
+    DW_WATCHDOG = no;
+    MAX63XX_WATCHDOG = no;
+    ACQUIRE_WDT = no;
+    ADVANTECH_WDT = no;
+    ALIM1535_WDT = no;
+    ALIM7101_WDT = no;
+    EBC_C384_WDT = no;
+    F71808E_WDT = no;
+    SBC_FITPC2_WATCHDOG = no;
+    EUROTECH_WDT = no;
+    IB700_WDT = no;
+    IBMASR = no;
+    WAFER_WDT = no;
+    I6300ESB_WDT = no;
+    IE6XX_WDT = no;
+    ITCO_WDT = no;
+    IT8712F_WDT = no;
+    IT87_WDT = no;
+    HP_WATCHDOG = no;
+    SC1200_WDT = no;
+    PC87413_WDT = no;
+    NV_TCO = no;
+    "60XX_WDT" = no;
+    CPU5_WDT = no;
+    SMSC_SCH311X_WDT = no;
+    SMSC37B787_WDT = no;
+    TQMX86_WDT = no;
+    VIA_WDT = no;
+    W83627HF_WDT = no;
+    W83877F_WDT = no;
+    W83977F_WDT = no;
+    MACHZ_WDT = no;
+    SBC_EPX_C3_WATCHDOG = no;
+    NI903X_WDT = no;
+    NIC7018_WDT = no;
+    MEN_A21_WDT = no;
+    PCIPCWATCHDOG = no;
+    WDTPCI = no;
+    USBPCWATCHDOG = no;
+
+    # EDAC
+    EDAC_LEGACY_SYSFS = no;
+    EDAC_E752X = no;
+    EDAC_I82975X = no;
+    EDAC_I3000 = no;
+    EDAC_I3200 = no;
+    EDAC_IE31200 = no;
+    EDAC_X38 = no;
+    EDAC_I5400 = no;
+    EDAC_I5000 = no;
+    EDAC_I7300 = no;
+    EDAC_I5100 = no;
+
+    # DMA
+    AMD_PTDMA = module;
+    ALTERA_MSGDMA = no;
+    INTEL_IDMA64 = no;
+    INTEL_IDXD = no;
+    INTEL_IDXD_COMPAT = no;
+    INTEL_IOATDMA = no;
+    PLX_DMA = no;
+    QCOM_HIDMA_MGMT = no;
+    QCOM_HIDMA = no;
+    DW_DMAC = no;
+    DW_DMAC_PCI = no;
+    DW_EDMA = no;
+    DW_EDMA_PCIE = no;
+    SF_PDMA = no;
+    ASYNC_TX_DMA = yes;
+    DMATEST = no;
 
     # Hardware monitor
     SENSORS_ABITUGURU = no;
@@ -193,7 +572,6 @@ in
     SENSORS_F71805F = no;
     SENSORS_F71882FG = no;
     SENSORS_F75375S = no;
-    SENSORS_MC13783_ADC = no;
     SENSORS_FSCHMD = no;
     SENSORS_FTSTEUTATES = no;
     SENSORS_GL518SM = no;
@@ -236,7 +614,6 @@ in
     SENSORS_MCP3021 = no;
     SENSORS_TC654 = no;
     SENSORS_TPS23861 = no;
-    SENSORS_MENF21BMC_HWMON = no;
     SENSORS_MR75203 = no;
     SENSORS_ADCXX = no;
     SENSORS_LM63 = no;
@@ -266,8 +643,6 @@ in
     SENSORS_NZXT_KRAKEN2 = no;
     SENSORS_NZXT_SMART2 = no;
     SENSORS_PCF8591 = no;
-    SENSORS_PECI_CPUTEMP = no;
-    SENSORS_PECI_DIMMTEMP = no;
     PMBUS = no;
     SENSORS_SBTSI = no;
     SENSORS_SBRMI = no;
@@ -321,8 +696,17 @@ in
     SENSORS_W83627HF = no;
     SENSORS_W83627EHF = no;
     SENSORS_XGENE = no;
-    SENSORS_INTEL_M10_BMC_HWMON = no;
     SENSORS_ASUS_EC = no;
+
+    # Thermal
+    #:continue
+    INTEL_SOC_DTS_THERMAL = no;
+    INTEL_PCH_THERMAL = no;
+    INTEL_TCC_COOLING = no;
+    INTEL_MENLOW = no;
+
+    # External connector
+    EXTCON = no;
 
     # Power supply
     #:continue
@@ -331,24 +715,97 @@ in
     TEST_POWER = no;
     CHARGER_LTC4162L = no;
     CHARGER_ADP5061 = no;
-    CHARGER_MAX14577 = no;
-    CHARGER_MAX77693 = no;
     CHARGER_MAX77976 = no;
-    CHARGER_MT6360 = no;
     CHARGER_BQ2415X = no;
-    CHARGER_BQ24190 = no;
     CHARGER_BQ24257 = no;
     CHARGER_BQ24735 = no;
     CHARGER_BQ2515X = no;
     CHARGER_BQ25890 = no;
     CHARGER_BQ25980 = no;
     CHARGER_BQ256XX = no;
-    CHARGER_SMB347 = no;
     CHARGER_LT3651 = no;
+    BATTERY_CW2015 = no;
+    BATTERY_DS2780 = no;
+    BATTERY_DS2781 = no;
+    BATTERY_DS2782 = no;
+    BATTERY_SBS = no;
+    CHARGER_SBS = no;
+    MANAGER_SBS = no;
+    BATTERY_BQ27XXX = no;
+    BATTERY_MAX17040 = no;
+    BATTERY_MAX17042 = no;
+    CHARGER_MAX8903 = no;
+    CHARGER_LP8727 = no;
+    CHARGER_GPIO = no;
+    BATTERY_GAUGE_LTC2941 = no;
+    BATTERY_GOLDFISH = no;
+    BATTERY_RT5033 = no;
+    CHARGER_RT9455 = no;
+    CHARGER_BD99954 = no;
+    BATTERY_UG3105 = no;
 
     # Input devices
     #:continue
-    MOUSE_PS2_VMMOUSE = forceOptionNo;
+      # Mice
+      MOUSE_PS2_VMMOUSE = forceOptionNo;
+      MOUSE_PS2_CYPRESS = no;
+      MOUSE_PS2_LIFEBOOK = no;
+      MOUSE_PS2_TRACKPOINT = no;
+      MOUSE_PS2_ELANTECH = forceNo;
+      MOUSE_PS2_FOCALTECH = no;
+      MOUSE_APPLETOUCH = no;
+      MOUSE_BCM5974 = no;
+      MOUSE_CYAPA = no;
+      MOUSE_ELAN_I2C = no;
+      MOUSE_ELAN_I2C_SMBUS = forceOptionNo;
+      MOUSE_VSXXXAA = no;
+      MOUSE_GPIO = no;
+      # Keyboard
+      KEYBOARD_ADP5588 = no;
+      KEYBOARD_ADP5589 = no;
+      KEYBOARD_QT1050 = no;
+      KEYBOARD_QT1070 = no;
+      KEYBOARD_APPLESPI = forceNo;
+      KEYBOARD_QT2160 = no;
+      KEYBOARD_DLINK_DIR685 = no;
+      KEYBOARD_LKKBD = no;
+      KEYBOARD_GPIO = no;
+      KEYBOARD_GPIO_POLLED = no;
+      KEYBOARD_TCA6416 = no;
+      KEYBOARD_TCA8418 = no;
+      KEYBOARD_MATRIX = no;
+      KEYBOARD_LM8323 = no;
+      KEYBOARD_LM8333 = no;
+      KEYBOARD_MAX7359 = no;
+      KEYBOARD_MCS = no;
+      KEYBOARD_MPR121 = no;
+      KEYBOARD_NEWTON = no;
+      KEYBOARD_OPENCORES = no;
+      KEYBOARD_SAMSUNG = no;
+      KEYBOARD_STOWAWAY = no;
+      KEYBOARD_SUNKBD = no;
+      KEYBOARD_TM2_TOUCHKEY = no;
+      KEYBOARD_XTKBD = no;
+      KEYBOARD_CYPRESS_SF = no;
+      # Touchscreen
+      INPUT_TOUCHSCREEN = no;
+      # Joystick
+      INPUT_JOYSTICK = no;
+      JOYSTICK_PSXPAD_SPI_FF = forceOptionNo;
+      # Tablet
+      INPUT_TABLET = no;
+      # Misc
+      INPUT_MISC = no;
+      # Hardware port
+      SERIO_SERPORT = no;
+      SERIO_CT82C710 = no;
+      SERIO_PCIPS2 = no;
+      SERIO_ALTERA_PS2 = no;
+      SERIO_PS2MULT = no;
+      SERIO_ARC_PS2 = no;
+      SERIO_GPIO_PS2 = no;
+      USERIO = no;
+      GAMEPORT = no;
 
     # Mutlimedia
     MEDIA_SUPPORT = forceNo;
@@ -371,8 +828,6 @@ in
     USB_MAX3421_HCD = no;
     USB_SL811_HCD = no;
     USB_R8A66597_HCD = no;
-    USB_HCD_BCMA = no;
-    USB_HCD_SSB = no;
     USB_ACM = no;
     USB_PRINTER = no;
     USB_TMC = no;
@@ -428,7 +883,6 @@ in
       USB_CHAOSKEY = no;
       NOP_USB_XCEIV = no;
       USB_GPIO_VBUS = no;
-      TAHVO_USB = no;
       USB_ISP1301 = no;
     USB_FOTG210_UDC = no;
     USB_GR_UDC = no;
@@ -445,9 +899,35 @@ in
     USB_EG20T = no;
     USB_MAX3420_UDC = no;
     USB_DUMMY_HCD = no;
+      # Type-cc
+      TYPEC_RT1711H = no;
+      TYPEC_TCPCI_MAXIM = no;
+      TYPEC_FUSB302 = no;
+      TYPEC_TPS6598X = no;
+      TYPEC_RT1719 = no;
+      TYPEC_HD3SS3220 = no;
+      TYPEC_STUSB160X = no;
+      TYPEC_WUSB3801 = no;
+      TYPEC_MUX_PI3USB30532 = no;
+      TYPEC_NVIDIA_ALTMODE = no;
+
+
+    # PHY subsystem
+    GENERIC_PHY = no;
+    USB_LGM_PHY = no;
+    PHY_CAN_TRANSCEIVER = no;
+    BCM_KONA_USB2_PHY = no;
+    PHY_PXA_28NM_HSIC = no;
+    PHY_PXA_28NM_USB2 = no;
+    PHY_QCOM_USB_HS = no;
+    PHY_QCOM_USB_HSIC = no;
+    PHY_TUSB1210 = no;
+    PHY_INTEL_LGM_EMMC = no;
 
     # Graphics
     #:continue
+    AGP = no;
+    DRM_AMD_ACP = yes;
     DRM_GUD = no;
     DRM_I915 = no;
     DRM_I915_GVT = forceOptionNo;
@@ -464,6 +944,16 @@ in
     DRM_VMWGFX = no;
     DRM_VMWGFX_FBCON = forceOptionNo;
     DRM_QXL = no;
+    DRM_I2C_CH7006 = no;
+    DRM_I2C_SIL164 = no;
+    DRM_I2C_NXP_TDA998X = no;
+    DRM_I2C_NXP_TDA9950 = no;
+    DRM_VGEM = no;
+    DRM_VKMS = no;
+    DRM_PANEL_WIDECHIPS_WS2401 = no;
+    DRM_ANALOGIX_ANX78XX = no;
+    DRM_PANEL_MIPI_DBI = no;
+    DRM_DEBUG_SELFTEST = no;
     TINYDRM_ST7735R = no;
     TINYDRM_ST7586 = no;
     TINYDRM_REPAPER = no;
@@ -472,6 +962,83 @@ in
     TINYDRM_ILI9341 = no;
     TINYDRM_ILI9225 = no;
     TINYDRM_HX8357D = no;
+    TINYDRM_ILI9163 = no;
+    DRM_SSD130X = no;
+    DRM_UDL = no;
+      # Framebuffer
+      FB_CIRRUS = no;
+      FB_PM2 = no;
+      FB_CYBER2000 = no;
+      FB_ARC = no;
+      FB_VGA16 = no;
+      FB_UVESA = no;
+      FB_N411 = no;
+      FB_HGA = no;
+      FB_OPENCORES = no;
+      FB_S1D13XXX = no;
+      FB_RIVA = no;
+      FB_RIVA_I2C = forceOptionNo;
+      FB_I740 = no;
+      FB_LE80578 = no;
+      FB_MATROX = no;
+      FB_ATY128 = no;
+      FB_ATY = no;
+      FB_ATY_CT = forceOptionNo;
+      FB_ATY_GX = forceOptionNo;
+      FB_S3 = no;
+      FB_SAVAGE = no;
+      FB_SAVAGE_ACCEL = forceOptionNo;
+      FB_SAVAGE_I2C = forceOptionNo;
+      FB_SIS = no;
+      FB_SIS_300 = forceOptionNo;
+      FB_SIS_315 = forceOptionNo;
+      FB_VIA = no;
+      FB_NEOMAGIC = no;
+      FB_KYRO = no;
+      FB_3DFX = no;
+      FB_3DFX_ACCEL = forceOptionNo;
+      FB_VOODOO1 = no;
+      FB_VT8623 = no;
+      FB_TRIDENT = no;
+      FB_ARK = no;
+      FB_PM3 = no;
+      FB_CARMINE = no;
+      FB_SMSCUFX = no;
+      FB_IBM_GXT4500 = no;
+      FB_VIRTUAL = no;
+      FB_METRONOME = no;
+      FB_MB862XX = no;
+      FB_SSD1307 = no;
+      FB_SM712 = no;
+      FB_SIMPLE = no;
+      FB_TILEBLITTING = no;
+      FB_NVIDIA = no;
+      FB_NVIDIA_I2C = forceOptionNo;
+      FB_UDL = no;
+      # LCD
+      LCD_L4F00242T03 = no;
+      LCD_LMS283GF05 = no;
+      LCD_LTV350QV = no;
+      LCD_ILI922X = no;
+      LCD_VGG2432A4 = no;
+      LCD_ILI9320 = no;
+      LCD_TDO24M = no;
+      LCD_PLATFORM = no;
+      LCD_AMS369FG06 = no;
+      LCD_LMS501KF03 = no;
+      LCD_HX8357 = no;
+      LCD_OTM3225A = no;
+      BACKLIGHT_KTD253 = no;
+      BACKLIGHT_APPLE = no;
+      BACKLIGHT_QCOM_WLED = no;
+      BACKLIGHT_SAHARA = no;
+      BACKLIGHT_ADP8860 = no;
+      BACKLIGHT_ADP8870 = no;
+      BACKLIGHT_LM3639 = no;
+      BACKLIGHT_GPIO = no;
+      BACKLIGHT_LV5207LP = no;
+      BACKLIGHT_BD6107 = no;
+      BACKLIGHT_ARCXCNN = no;
 
     # X86
     HUAWEI_WMI = no;
@@ -484,7 +1051,6 @@ in
     ACER_WIRELESS = no;
     ADV_SWBUTTON = no;
     APPLE_GMUX = no;
-    MERAKI_MX100 = no;
     EEEPC_LAPTOP = no;
     EEEPC_WMI = no;
     X86_PLATFORM_DRIVERS_DELL = forceNo;
@@ -499,13 +1065,10 @@ in
     SENSORS_HDAPS = no;
     THINKPAD_ACPI = no;
     THINKPAD_LMI = no;
-    INTEL_ATOMISP2_LED = no;
     INTEL_ATOMISP2_PM = no;
     INTEL_SAR_INT1092 = no;
-    INTEL_SKL_INT3472 = no;
     INTEL_PMC_CORE = no;
     INTEL_SPEED_SELECT_INTERFACE = no;
-    INTEL_TELEMETRY = forceOptionNo;
     INTEL_WMI_SBL_FW_UPDATE = no;
     INTEL_WMI_THUNDERBOLT = no;
     INTEL_UNCORE_FREQ_CONTROL = no;
@@ -513,8 +1076,6 @@ in
     INTEL_VBTN = no;
     INTEL_INT0002_VGPIO = no;
     INTEL_OAKTRAIL = no;
-    INTEL_BXTWC_PMIC_TMU = no;
-    INTEL_MRFLD_PWRBTN = forceOptionNo;
     INTEL_PUNIT_IPC = no;
     INTEL_RST = no;
     INTEL_SMARTCONNECT = no;
@@ -538,11 +1099,107 @@ in
     INTEL_IPS = no;
     INTEL_SCU_PLATFORM = no;
     SIEMENS_SIMATIC_IPC = no;
+    INTEL_VSEC = no;
+    MXM_WMI = no;
+    BARCO_P50_GPIO = no;
+    SERIAL_MULTI_INSTANTIATE = no;
+
+    # Pin control
+    PINCTRL_MCP23S08 = no;
+    PINCTRL_BAYTRAIL = forceNo;
+    PINCTRL_CHERRYVIEW = forceNo;
+    PINCTRL_LYNXPOINT = no;
+    PINCTRL_ALDERLAKE = no;
+    PINCTRL_BROXTON = no;
+    PINCTRL_CANNONLAKE = no;
+    PINCTRL_CEDARFORK = no;
+    PINCTRL_DENVERTON = no;
+    PINCTRL_ELKHARTLAKE = no;
+    PINCTRL_EMMITSBURG = no;
+    PINCTRL_GEMINILAKE = no;
+    PINCTRL_ICELAKE = no;
+    PINCTRL_JASPERLAKE = no;
+    PINCTRL_LAKEFIELD = no;
+    PINCTRL_LEWISBURG = no;
+    PINCTRL_SUNRISEPOINT = no;
+    PINCTRL_TIGERLAKE = no;
 
     # Sound
     #:continue
     SND_SOC_INTEL_SOUNDWIRE_SOF_MACH = forceOptionNo;
     SND_VIRMIDI = no;
+    SND_PCSP = no;
+    SND_AC97_POWER_SAVE = forceNo;
+    SND_MPU401 = no;
+    SND_SERIAL_U16550 = no;
+    SND_MTPAV = no;
+    SND_VIRTIO = no;
+    SND_SPI = no;
+      # PCI sound devices
+      SND_AD1889 = no;
+      SND_ALS300 = no;
+      SND_ALS4000 = no;
+      SND_ALI5451 = no;
+      SND_ASIHPI = no;
+      SND_ATIIXP = no;
+      SND_ATIIXP_MODEM = no;
+      SND_CTXFI = no;
+      SND_AU8810 = no;
+      SND_AU8820 = no;
+      SND_AU8830 = no;
+      SND_AW2 = no;
+      SND_AZT3328 = no;
+      SND_BT87X = no;
+      SND_CA0106 = no;
+      SND_CMIPCI = no;
+      SND_OXYGEN = no;
+      SND_CS4281 = no;
+      SND_CS46XX = no;
+      SND_DARLA20 = no;
+      SND_GINA20 = no;
+      SND_LAYLA20 = no;
+      SND_DARLA24 = no;
+      SND_GINA24 = no;
+      SND_LAYLA24 = no;
+      SND_MONA = no;
+      SND_MIA = no;
+      SND_ECHO3G = no;
+      SND_INDIGO = no;
+      SND_INDIGOIO = no;
+      SND_INDIGODJ = no;
+      SND_INDIGOIOX = no;
+      SND_INDIGODJX = no;
+      SND_EMU10K1 = no;
+      SND_EMU10K1X = no;
+      SND_ENS1370 = no;
+      SND_ENS1371 = no;
+      SND_ES1968 = no;
+      SND_FM801 = no;
+      SND_ES1938 = no;
+      SND_HDSP = no;
+      SND_HDSPM = no;
+      SND_ICE1712 = no;
+      SND_ICE1724 = no;
+      SND_INTEL8X0 = no;
+      SND_INTEL8X0M = no;
+      SND_KORG1212 = no;
+      SND_LOLA = no;
+      SND_LX6464ES = no;
+      SND_MAESTRO3 = no;
+      SND_MIXART = no;
+      SND_NM256 = no;
+      SND_PCXHR = no;
+      SND_RIPTIDE = no;
+      SND_RME32 = no;
+      SND_RME96 = no;
+      SND_RME9652 = no;
+      SND_SONICVIBES = no;
+      SND_TRIDENT = no;
+      SND_VIA82XX = no;
+      SND_VIA82XX_MODEM = no;
+      SND_VIRTUOSO = no;
+      SND_VX222 = no;
+      SND_YMFPCI = no;
       # HD audio
       SND_HDA_SCODEC_CS35L41_I2C = no;
       SND_HDA_SCODEC_CS35L41_SPI = no;
@@ -556,6 +1213,7 @@ in
       SND_HDA_CODEC_CA0132 = no;
       SND_HDA_CODEC_CMEDIA = no;
       SND_HDA_CODEC_SI3054 = no;
+      SND_HDA_HWDEP = no;
       # SoC
       SND_SOC_ADI = no;
       SND_ATMEL_SOC = no;
@@ -569,7 +1227,6 @@ in
       SND_SOC_FSL_ESAI = no;
       SND_SOC_FSL_MICFIL = no;
       SND_SOC_FSL_XCVR = no;
-      SND_SOC_FSL_RPMSG = no;
       SND_SOC_IMX_AUDMUX = no;
       SND_I2S_HI6210_I2S = no;
       SND_SOC_INTEL_SST_TOPLEVEL = no;
@@ -593,7 +1250,14 @@ in
       SND_SOC_XILINX_AUDIO_FORMATTER = no;
       SND_SOC_XILINX_SPDIF = no;
       SND_SOC_XTFPGA_I2S = no;
+      SND_SOC_AMD_ACP6x = no;
+      SND_SOC_AMD_ACP5x = no;
+      SND_SOC_AMD_ACP3x = no;
+      SND_SOC_AMD_CZ_DA7219MX98357_MACH = no;
+      SND_SOC_AMD_LEGACY_MACH = no;
         # Codec
+        SND_SOC_ADAU1701 = no;
+        SND_SOC_ADAU1761_I2C = no;
         SND_SOC_ADAU1372_I2C = no;
         SND_SOC_ADAU1372_SPI = no;
         SND_SOC_ADAU1761_SPI = no;
@@ -608,6 +1272,148 @@ in
         SND_SOC_AK4642 = no;
         SND_SOC_AK5386 = no;
         SND_SOC_AK5558 = no;
+        SND_SOC_ALC5623 = no;
+        SND_SOC_AW8738 = no;
+        SND_SOC_BD28623 = no;
+        SND_SOC_BT_SCO = no;
+        SND_SOC_CS35L32 = no;
+        SND_SOC_CS35L33 = no;
+        SND_SOC_CS35L34 = no;
+        SND_SOC_CS35L35 = no;
+        SND_SOC_CS35L36 = no;
+        SND_SOC_CS35L41_SPI = no;
+        SND_SOC_CS35L41_I2C = no;
+        SND_SOC_CS42L42 = no;
+        SND_SOC_CS42L51_I2C = no;
+        SND_SOC_CS42L52 = no;
+        SND_SOC_CS42L56 = no;
+        SND_SOC_CS42L73 = no;
+        SND_SOC_CS4234 = no;
+        SND_SOC_CS4265 = no;
+        SND_SOC_CS4270 = no;
+        SND_SOC_CS4271_I2C = no;
+        SND_SOC_CS4271_SPI = no;
+        SND_SOC_CS42XX8_I2C = no;
+        SND_SOC_CS43130 = no;
+        SND_SOC_CS4341 = no;
+        SND_SOC_CS4349 = no;
+        SND_SOC_CS53L30 = no;
+        SND_SOC_CX2072X = no;
+        SND_SOC_DA7213 = no;
+        SND_SOC_ES7241 = no;
+        SND_SOC_ES8316 = no;
+        SND_SOC_ES8328_I2C = no;
+        SND_SOC_ES8328_SPI = no;
+        SND_SOC_GTM601 = no;
+        SND_SOC_ICS43432 = no;
+        SND_SOC_INNO_RK3036 = no;
+        SND_SOC_MAX98088 = no;
+        SND_SOC_MAX98504 = no;
+        SND_SOC_MAX9867 = no;
+        SND_SOC_MAX98927 = no;
+        SND_SOC_MAX98520 = no;
+        SND_SOC_MAX98373_I2C = no;
+        SND_SOC_MAX98390 = no;
+        SND_SOC_MAX9860 = no;
+        SND_SOC_MSM8916_WCD_DIGITAL = no;
+        SND_SOC_PCM1681 = no;
+        SND_SOC_PCM1789_I2C = no;
+        SND_SOC_PCM179X_I2C = no;
+        SND_SOC_PCM179X_SPI = no;
+        SND_SOC_PCM186X_I2C = no;
+        SND_SOC_PCM186X_SPI = no;
+        SND_SOC_PCM3060_I2C = no;
+        SND_SOC_PCM3060_SPI = no;
+        SND_SOC_PCM3168A_I2C = no;
+        SND_SOC_PCM3168A_SPI = no;
+        SND_SOC_PCM5102A = no;
+        SND_SOC_PCM512x_I2C = no;
+        SND_SOC_PCM512x_SPI = no;
+        SND_SOC_ES7134 = no;
+        SND_SOC_RK3328 = no;
+        SND_SOC_RT5616 = no;
+        SND_SOC_RT5631 = no;
+        SND_SOC_RT5640 = no;
+        SND_SOC_RT5659 = no;
+        SND_SOC_RT9120 = no;
+        SND_SOC_SGTL5000 = no;
+        SND_SOC_SIMPLE_AMPLIFIER = no;
+        SND_SOC_SIMPLE_MUX = no;
+        SND_SOC_SPDIF = no;
+        SND_SOC_SSM2305 = no;
+        SND_SOC_SSM2518 = no;
+        SND_SOC_SSM2602_SPI = no;
+        SND_SOC_SSM2602_I2C = no;
+        SND_SOC_SSM4567 = no;
+        SND_SOC_STA32X = no;
+        SND_SOC_STA350 = no;
+        SND_SOC_STI_SAS = no;
+        SND_SOC_TAS2552 = no;
+        SND_SOC_TAS2562 = no;
+        SND_SOC_TAS2764 = no;
+        SND_SOC_TAS2770 = no;
+        SND_SOC_TAS5086 = no;
+        SND_SOC_TAS571X = no;
+        SND_SOC_TAS5720 = no;
+        SND_SOC_TAS5805M = no;
+        SND_SOC_TAS6424 = no;
+        SND_SOC_TDA7419 = no;
+        SND_SOC_TFA9879 = no;
+        SND_SOC_TFA989X = no;
+        SND_SOC_TLV320ADC3XXX = no;
+        SND_SOC_TLV320AIC23_I2C = no;
+        SND_SOC_TLV320AIC23_SPI = no;
+        SND_SOC_TLV320AIC31XX = no;
+        SND_SOC_TLV320AIC32X4_I2C = no;
+        SND_SOC_TLV320AIC32X4_SPI = no;
+        SND_SOC_TLV320AIC3X_I2C = no;
+        SND_SOC_TLV320AIC3X_SPI = no;
+        SND_SOC_TLV320ADCX140 = no;
+        SND_SOC_TS3A227E = no;
+        SND_SOC_TSCS42XX = no;
+        SND_SOC_TSCS454 = no;
+        SND_SOC_UDA1334 = no;
+        SND_SOC_WM8510 = no;
+        SND_SOC_WM8523 = no;
+        SND_SOC_WM8524 = no;
+        SND_SOC_WM8580 = no;
+        SND_SOC_WM8711 = no;
+        SND_SOC_WM8728 = no;
+        SND_SOC_WM8731 = no;
+        SND_SOC_WM8737 = no;
+        SND_SOC_WM8741 = no;
+        SND_SOC_WM8750 = no;
+        SND_SOC_WM8753 = no;
+        SND_SOC_WM8770 = no;
+        SND_SOC_WM8776 = no;
+        SND_SOC_WM8782 = no;
+        SND_SOC_WM8804_I2C = no;
+        SND_SOC_WM8804_SPI = no;
+        SND_SOC_WM8903 = no;
+        SND_SOC_WM8904 = no;
+        SND_SOC_WM8960 = no;
+        SND_SOC_WM8962 = no;
+        SND_SOC_WM8974 = no;
+        SND_SOC_WM8978 = no;
+        SND_SOC_WM8985 = no;
+        SND_SOC_ZL38060 = no;
+        SND_SOC_MAX9759 = no;
+        SND_SOC_MT6351 = no;
+        SND_SOC_MT6358 = no;
+        SND_SOC_MT6660 = no;
+        SND_SOC_NAU8315 = no;
+        SND_SOC_NAU8540 = no;
+        SND_SOC_NAU8810 = no;
+        SND_SOC_NAU8821 = no;
+        SND_SOC_NAU8822 = no;
+        SND_SOC_NAU8824 = no;
+        SND_SOC_TPA6130A2 = no;
+        SND_SOC_LPASS_WSA_MACRO = no;
+        SND_SOC_LPASS_VA_MACRO = no;
+        SND_SOC_LPASS_RX_MACRO = no;
+        SND_SOC_LPASS_TX_MACRO = no;
+        SND_SOC_AMD_CZ_RT5645_MACH = no;
+        SND_SIMPLE_CARD = no;
 
     # Block devices
     BLK_DEV_FD = no;
@@ -618,6 +1424,8 @@ in
     ATA_OVER_ETH = no;
     VIRTIO_BLK = no;
     BLK_DEV_RBD = no;
+    ZRAM_DEF_COMP_ZSTD = yes;
+    ZRAM_DEF_COMP = freeform "zstd";
 
     # NVMe
     NVME_TCP = no;
@@ -688,8 +1496,78 @@ in
     INTEL_MEI = no;
     INTEL_MEI_ME = no;
     INTEL_MEI_TXE = no;
+    TIFM_CORE = no;
+    ENCLOSURE_SERVICES = no;
+    PCI_ENDPOINT_TEST = no;
+    CB710_CORE = no;
+    ALTERA_STAPL = no;
+
+    # Multifunctional
+    MFD_BCM590XX = no;
+    MFD_BD9571MWV = no;
+    MFD_AXP20X_I2C = no;
+    MFD_MADERA = no;
+    MFD_DA9052_SPI = no;
+    MFD_DA9062 = no;
+    MFD_DA9063 = no;
+    MFD_DA9150 = no;
+    MFD_DLN2 = no;
+    MFD_MC13XXX_SPI = no;
+    MFD_MC13XXX_I2C = no;
+    MFD_MP2629 = no;
+    HTC_PASIC3 = no;
+    MFD_INTEL_QUARK_I2C_GPIO = no;
+    LPC_ICH = no;
+    LPC_SCH = no;
+    MFD_INTEL_LPSS_ACPI = no;
+    MFD_INTEL_LPSS_PCI = no;
+    MFD_INTEL_PMC_BXT = no;
+    MFD_IQS62X = no;
+    MFD_JANZ_CMODIO = no;
+    MFD_KEMPLD = no;
+    MFD_88PM800 = no;
+    MFD_88PM805 = no;
+    MFD_MAX14577 = no;
+    MFD_MAX77693 = no;
+    MFD_MAX8907 = no;
+    MFD_MT6360 = no;
+    MFD_MT6397 = no;
+    MFD_MENF21BMC = no;
+    MFD_VIPERBOARD = no;
+    EZX_PCAP = no;
+    MFD_RETU = no;
+    MFD_PCF50633 = no;
+    UCB1400_CORE = no;
+    MFD_RDC321X = no;
+    MFD_RT4831 = no;
+    MFD_RT5033 = no;
+    MFD_SI476X_CORE = no;
+    MFD_SIMPLE_MFD_I2C = no;
+    MFD_SM501 = no;
+    MFD_SKY81452 = no;
+    MFD_TI_AM335X_TSCADC = no;
+    MFD_LP3943 = no;
+    MFD_TI_LMU = no;
+    TPS6105X = no;
+    TPS65010 = no;
+    TPS6507X = no;
+    MFD_TPS65086 = no;
+    MFD_TI_LP873X = no;
+    MFD_TPS65912_I2C = no;
+    MFD_TPS65912_SPI = no;
+    MFD_WL1273_CORE = no;
+    MFD_LM3533 = no;
+    MFD_TQMX86 = no;
+    MFD_VX855 = no;
+    MFD_ARIZONA_I2C = no;
+    MFD_ARIZONA_SPI = no;
+    MFD_WM8994 = no;
+    MFD_ATC260X_I2C = no;
+    RAVE_SP_CORE = no;
+    MFD_INTEL_M10_BMC = no;
 
     # libata
+    ATA_SFF = no;
     SATA_INIC162X = no;
     SATA_ACARD_AHCI = no;
     SATA_SIL24 = no;
@@ -702,7 +1580,6 @@ in
     BAREUDP = no;
     GENEVE = no;
     ARCNET = no;
-    ATM_DRIVERS = option no;
     PPP = no;
     PPP_FILTER = forceOptionNo;
     PPP_MULTILINK = forceOptionNo;
@@ -711,34 +1588,30 @@ in
     SLIP_SMART = forceOptionNo;
     MICREL_KS8995MA = no;
     NET_SB1000 = no;
+    PHYLIB = no;
+    MDIO_DEVICE = no;
+    NETDEVSIM = no;
+    VIRTIO_NET = no;
+    NLMON = no;
+    NETCONSOLE = no;
+    AMT = no;
+    NET_TEAM = no;
+    USB4_NET = no;
       # Ethernet drivers
       ETHERNET = no;
       "8139TOO_8129" = forceOptionNo;
       "8139TOO_PIO" = forceOptionNo;
     FDDI = no;
     HIPPI = forceNo;
-    MHI_NET = no;
-    PCS_XPCS = no;
-      # USB ethernet
+      # USB network adapter
       USB_CATC = no;
       USB_KAWETH = no;
       USB_PEGASUS = no;
-      USB_NET_ZAURUS = no;
-      USB_NET_KALMIA = no;
-      USB_NET_QMI_WWAN = no;
       USB_HSO = no;
-      USB_NET_INT51X1 = no;
-      USB_SIERRA_NET = no;
-      USB_VL600 = no;
-      USB_NET_CH9200 = no;
-      USB_NET_AQC111 = no;
-      USB_RTL8153_ECM = no;
       USB_RTL8150 = no;
       USB_RTL8152 = no;
       USB_LAN78XX = no;
-      USB_NET_CX82310_ETH = no;
-      USB_ARMLINUX = no;
-      USB_BELKIN = no;
+      USB_USBNET = no;
     WAN = forceNo;
     WWAN = no;
       # Wireless LAN
@@ -765,6 +1638,10 @@ in
       RTW88 = forceOptionNo;
       RTW88_8822BE = forceOptionNo;
       RTW88_8822CE = forceOptionNo;
+      IPW2100 = no;
+      IPW2200 = no;
+      IWL4965 = no;
+      IWL3945 = no;
     VMXNET3 = no;
     FUJITSU_ES = no;
 
@@ -828,7 +1705,6 @@ in
     HID_MALTRON = no;
     HID_MAYFLASH = no;
     HID_REDRAGON = no;
-    HID_PLAYSTATION = no;
     PLAYSTATION_FF = forceOptionNo;
     HID_SONY = no;
     SONY_FF = forceOptionNo;
@@ -872,40 +1748,40 @@ in
     HID_ROCCAT = no;
     HID_SAITEK = no;
 
-    # Sound
-    SND_PCSP = no;
-    SND_AC97_POWER_SAVE = forceNo;
-    SND_MPU401 = no;
-    SND_SERIAL_U16550 = no;
-    SND_MTPAV = no;
-    SND_VIRTIO = no;
-      # PCI sound devices
-      SND_AD1889 = no;
-      SND_ALS300 = no;
-      SND_ALS4000 = no;
-      SND_ALI5451 = no;
-      SND_ASIHPI = no;
-      SND_ATIIXP = no;
-      SND_ATIIXP_MODEM = no;
-      SND_CTXFI = no;
-      SND_AU8810 = no;
-      SND_AU8820 = no;
-      SND_AU8830 = no;
+    # LEDs
+    LEDS_CLASS_FLASH = no;
+    LEDS_CLASS_MULTICOLOR = no;
+    LEDS_APU = no;
+    LEDS_LM3530 = no;
+    LEDS_LM3532 = no;
+    LEDS_LM3642 = no;
+    LEDS_PCA9532 = no;
+    LEDS_GPIO = no;
+    LEDS_LP3944 = no;
+    LEDS_LP3952 = no;
+    LEDS_LP50XX = no;
+    LEDS_CLEVO_MAIL = no;
+    LEDS_PCA955X = no;
+    LEDS_PCA963X = no;
+    LEDS_DAC124S085 = no;
+    LEDS_BD2802 = no;
+    LEDS_INTEL_SS4200 = no;
+    LEDS_LT3593 = no;
+    LEDS_TCA6507 = no;
+    LEDS_TLC591XX = no;
+    LEDS_LM355x = no;
+    LEDS_BLINKM = no;
+    LEDS_MLXCPLD = no;
+    LEDS_MLXREG = no;
+    LEDS_USER = no;
+    LEDS_NIC78BX = no;
+    LEDS_TI_LMU_COMMON = no;
+    LEDS_TRIGGER_GPIO = no;
 
     # MTD
-    MTD_HYPERBUS = no;
-    MTD_LPDDR = no;
-    MTD_PMC551 = no;
-    MTD_DATAFLASH = no;
-    MTD_MCHP23K256 = no;
-    MTD_MCHP48L640 = no;
-    MTD_SST25L = no;
-    MTD_MTDRAM = no;
-    MTD_DOCG3 = no;
-    SM_FTL = no;
-    SSFDC = no;
+    MTD = no;
+    MTD_COMPLEX_MAPPINGS = forceOptionNo;
 
-    # H
 
 
   #
@@ -937,8 +1813,7 @@ in
   NFS_V4_2 = forceOptionNo;
   NFS_V4_SECURITY_LABEL = forceOptionNo;
   NFSD = no;
-  "9P_FS" = no;
-
+  UDF_FS = forceNo;
     # Network filesystems
     CEPH_FS = no;
     CEPH_FSCACHE = forceOptionNo;
@@ -951,7 +1826,6 @@ in
     SMB_SERVER = no;
     CODA_FS = no;
     AFS_FS = no;
-
     # MISC_FILESYSTEMS
     ORANGEFS_FS = no;
     ADFS_FS = no;
@@ -962,8 +1836,6 @@ in
     BEFS_FS = no;
     BFS_FS = no;
     EFS_FS = no;
-    JFFS2_FS = no;
-    UBIFS_FS = no;
     CRAMFS = no;
     VXFS_FS = no;
     MINIX_FS = no;
@@ -975,6 +1847,47 @@ in
     UFS_FS = no;
     EROFS_FS = no;
     ROMFS_FS = no;
+    # Native language support
+    NLS_CODEPAGE_737 = no;
+    NLS_CODEPAGE_775 = no;
+    NLS_CODEPAGE_855 = no;
+    NLS_CODEPAGE_857 = no;
+    NLS_CODEPAGE_860 = no;
+    NLS_CODEPAGE_861 = no;
+    NLS_CODEPAGE_862 = no;
+    NLS_CODEPAGE_863 = no;
+    NLS_CODEPAGE_864 = no;
+    NLS_CODEPAGE_865 = no;
+    NLS_CODEPAGE_866 = no;
+    NLS_CODEPAGE_869 = no;
+    NLS_CODEPAGE_949 = no;
+    NLS_CODEPAGE_874 = no;
+    NLS_CODEPAGE_950 = no;
+    NLS_ISO8859_8 = no;
+    NLS_CODEPAGE_1250 = no;
+    NLS_CODEPAGE_1251 = no;
+    NLS_ISO8859_2 = no;
+    NLS_ISO8859_3 = no;
+    NLS_ISO8859_4 = no;
+    NLS_ISO8859_5 = no;
+    NLS_ISO8859_6 = no;
+    NLS_ISO8859_7 = no;
+    NLS_ISO8859_9 = no;
+    NLS_ISO8859_13 = no;
+    NLS_ISO8859_14 = no;
+    NLS_KOI8_R = no;
+    NLS_KOI8_U = no;
+    NLS_MAC_ROMAN = no;
+    NLS_MAC_CELTIC = no;
+    NLS_MAC_CENTEURO = no;
+    NLS_MAC_CROATIAN = no;
+    NLS_MAC_CYRILLIC = no;
+    NLS_MAC_GAELIC = no;
+    NLS_MAC_GREEK = no;
+    NLS_MAC_ICELAND = no;
+    NLS_MAC_INUIT = no;
+    NLS_MAC_ROMANIAN = no;
+    NLS_MAC_TURKISH = no;
 
 
   #
@@ -993,6 +1906,10 @@ in
   X86_POWERNOW_K8 = no;
   X86_SPEEDSTEP_CENTRINO = no;
   X86_P4_CLOCKMOD = no;
+  ACPI_DOCK = no;
+  ACPI_HED = no;
+  ACPI_NFIT = no;
+  ACPI_TINY_POWER_BUTTON = no;
 
 
   #
@@ -1003,7 +1920,7 @@ in
   KVM_GUEST = forceOptionNo;
   X86_EXTENDED_PLATFORM = no;
   X86_MCE_INTEL = no;
-  MICROCODE_INTEL = forceOptionNo;
+  MICROCODE_INTEL = forceOptionNo;  # enable this eventually
   NR_CPUS = mkForce (freeform "32");
     # Processor select
     PROCESSOR_SELECT = yes;
@@ -1014,4 +1931,54 @@ in
     CPU_SUP_ZHAOXIN = no;
   X86_SGX = forceOptionNo;
   X86_SGX_KVM = forceOptionNo;
+  LEGACY_VSYSCALL_NONE = yes;
+  X86_INTEL_LPSS = forceNo;
+  X86_SMAP = no;
+
+
+  #
+  # Crypto
+  #
+    # Hardware crypto devices
+    CRYPTO_DEV_PADLOCK = no;
+    CRYPTO_DEV_ATMEL_ECC = no;
+    CRYPTO_DEV_ATMEL_SHA204A = no;
+    CRYPTO_DEV_QAT_DH895xCC = no;
+    CRYPTO_DEV_QAT_C3XXX = no;
+    CRYPTO_DEV_QAT_C62X = no;
+    CRYPTO_DEV_QAT_4XXX = no;
+    CRYPTO_DEV_QAT_DH895xCCVF = no;
+    CRYPTO_DEV_QAT_C3XXXVF = no;
+    CRYPTO_DEV_QAT_C62XVF = no;
+    CRYPTO_DEV_NITROX_CNN55XX = no;
+    CRYPTO_DEV_VIRTIO = no;
+    CRYPTO_DEV_SAFEXCEL = no;
+    CRYPTO_DEV_AMLOGIC_GXL = no;
+
+
+  #
+  # Hacking
+  #
+  PUNIT_ATOM_DEBUG = no;
+  X86_DEBUG_FPU = no;
+  EARLY_PRINTK = no;
+  PROVIDE_OHCI1394_DMA_INIT = no;
+  DEBUG_LIST = forceNo;
+  SCF_TORTURE_TEST = no;
+  DEBUG_PREEMPT = no;
+  TEST_LOCKUP = no;
+  DEBUG_MISC = no;
+  DEBUG_BUGVERBOSE = no;
+  FTRACE = forceNo;
+  DEBUG_INFO = forceOptionNo;
+  DEBUG_INFO_NONE = yes;
+  DEBUG_INFO_BTF = forceOptionNo;
+  DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT = forceNo;
+  STACK_TRACER = forceOptionNo;
+  FTRACE_SYSCALLS = forceOptionNo;
+  FUNCTION_PROFILER = forceOptionNo;
+  FUNCTION_TRACER = forceOptionNo;
+  SCHED_TRACER = forceOptionNo;
+  RING_BUFFER_BENCHMARK = forceOptionNo;
+  BPF_EVENTS = forceOptionNo;
 }

@@ -40,14 +40,14 @@ linuxPackages_zen.extend ( self: super:
     # and override it, then pass the
     # clang-able config to this "innocentKernel".
 
-    innocentKernel = super.kernel.override
-      { argsOverride.structuredExtraConfig =
-          kernelConfigs;
-      };
+    innocentKernel = super.kernel.override ( krlOld:
+      { structuredExtraConfig =
+            kernelConfigs // ( krlOld.structuredExtraConfig or {} );
+      } );
 
     awesomeKernel = innocentKernel.overrideDerivation ( oldDrv:
       { NIX_CFLAGS_COMPILE =
-          "-march=x86-64-v3 -mtune=znver2";
+          "-march=x86-64-v3 -mtune=znver2 ${oldDrv.NIX_CFLAGS_COMPILE or ""}";
       } );
 
   in

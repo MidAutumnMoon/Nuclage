@@ -59,7 +59,7 @@
       # ...right into your shell...
 
       devShells = pkgsForSystem ( pkgs: with pkgs;
-        mkShell {
+        mkShellNoCC {
           packages = [ fish yq-go nix-build-uncached ];
         } );
     };
