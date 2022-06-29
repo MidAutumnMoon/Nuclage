@@ -25,9 +25,9 @@ jobs:
             - uses: actions/cache@v3
               with:
                 path: ~/ccache
-                key: ccaches-${{ github.job }}-${{ github.sha }}
+                key: ccaches-seg01-${{ github.job }}-${{ github.sha }}
                 restore-keys: |
-                    ccaches-${{ github.job }}-
+                    ccaches-seg01--${{ github.job }}-
             - name: "Setup ccache for nix"
               run: |
                 fish _scripts/ccache.fish setup
@@ -77,9 +77,9 @@ jobs:
             - uses: actions/cache@v3
               with:
                 path: ~/ccache
-                key: ccaches-${{ github.job }}-${{ github.sha }}
+                key: ccaches-seg01-${{ github.job }}-${{ github.sha }}
                 restore-keys: |
-                    ccaches-${{ github.job }}-
+                    ccaches-seg01--${{ github.job }}-
             - name: "Setup ccache for nix"
               run: |
                 fish _scripts/ccache.fish setup
@@ -128,9 +128,9 @@ jobs:
             - uses: actions/cache@v3
               with:
                 path: ~/ccache
-                key: ccaches-${{ github.job }}-${{ github.sha }}
+                key: ccaches-seg01-${{ github.job }}-${{ github.sha }}
                 restore-keys: |
-                    ccaches-${{ github.job }}-
+                    ccaches-seg01--${{ github.job }}-
             - name: "Setup ccache for nix"
               run: |
                 fish _scripts/ccache.fish setup

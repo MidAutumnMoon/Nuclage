@@ -43,7 +43,7 @@ jobs:
                 authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
                 cachixArgs: "-j8 -c5"
                 pushFilter: |
-                    (NVIDIA.*\.run)|(-source|vendor\.tar\.gz)|(ccache|stdenv)
+                    (NVIDIA.*\.run|linux.*-dev)|(-source|vendor\..*)|(ccache|stdenv)
             - name: "Build"
               run: |
                 nix-build-uncached workflow-builds.nix \
@@ -95,7 +95,7 @@ jobs:
                 authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
                 cachixArgs: "-j8 -c5"
                 pushFilter: |
-                    (NVIDIA.*\.run)|(-source|vendor\.tar\.gz)|(ccache|stdenv)
+                    (NVIDIA.*\.run|linux.*-dev)|(-source|vendor\..*)|(ccache|stdenv)
             - name: "Build"
               run: |
                 fish _scripts/seq-build.fish \
@@ -146,7 +146,7 @@ jobs:
                 authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
                 cachixArgs: "-j8 -c5"
                 pushFilter: |
-                    (NVIDIA.*\.run)|(-source|vendor\.tar\.gz)|(ccache|stdenv)
+                    (NVIDIA.*\.run|linux.*-dev)|(-source|vendor\..*)|(ccache|stdenv)
             - name: "Build"
               run: |
                 fish _scripts/seq-build.fish \
