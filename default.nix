@@ -112,4 +112,13 @@ in
   plasma5Packages =
     callPackage ./break/plasma5-packages { inherit (prev) plasma5Packages; };
 
+
+
+  #
+  # Stdenv: a cage to make the dragon of chaos controllable until one step inside it
+  #
+
+  ccacheStdenvNu =
+    callPackage ./nix/stdenv/ccacheStdenvNu.nix {  };
+
 }

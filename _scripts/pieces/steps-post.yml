@@ -2,3 +2,8 @@
   if: always()
   run: |
       nix-collect-garbage -d
+
+- name: "Save ccache"
+  if: always()
+  run: |
+      fish _scripts/ccache.fish finish

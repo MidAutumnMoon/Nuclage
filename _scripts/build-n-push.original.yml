@@ -14,9 +14,23 @@ jobs:
             - uses: cachix/install-nix-action@v17
               with:
                 nix_path: "nixpkgs=channel:nixpkgs-unstable"
+                # Need manually sed /etc/nix/nix.conf to
+                # add extra-sandbox-paths since invoking
+                # nix happens before setup ccache dirs,
+                # which makes nix angry.
             - name: "Install tools"
               run: |
-                nix-env -f '<nixpkgs>' -iA 'nix-build-uncached' 'fish'
+                nix-env -f '<nixpkgs>' -iA \
+                  'nix-build-uncached' 'fish' 'rsync'
+            - uses: actions/cache@v3
+              with:
+                path: ~/ccache
+                key: ccaches-${{ github.job }}-${{ github.sha }}
+                restore-keys: |
+                    ccaches-${{ github.job }}-
+            - name: "Setup ccache for nix"
+              run: |
+                fish _scripts/ccache.fish setup
             - name: "Change TMPDIR for nix daemon"
               run: |
                 fish _scripts/set-tmpdir.fish
@@ -29,7 +43,7 @@ jobs:
                 authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
                 cachixArgs: "-j8 -c5"
                 pushFilter: |
-                    (NVIDIA.*\.run)|(-source)
+                    (NVIDIA.*\.run)|(-source|vendor\.tar\.gz)|(ccache|stdenv)
             - name: "Build"
               run: |
                 nix-build-uncached workflow-builds.nix \
@@ -38,7 +52,11 @@ jobs:
             - name: "Cleanup"
               if: always()
               run: |
-                sudo nix-collect-garbage -d
+                nix-collect-garbage -d
+            - name: "Save ccache"
+              if: always()
+              run: |
+                fish _scripts/ccache.fish finish
     builds-sequential:
         runs-on: ubuntu-latest
         steps:
@@ -48,9 +66,23 @@ jobs:
             - uses: cachix/install-nix-action@v17
               with:
                 nix_path: "nixpkgs=channel:nixpkgs-unstable"
+                # Need manually sed /etc/nix/nix.conf to
+                # add extra-sandbox-paths since invoking
+                # nix happens before setup ccache dirs,
+                # which makes nix angry.
             - name: "Install tools"
               run: |
-                nix-env -f '<nixpkgs>' -iA 'nix-build-uncached' 'fish'
+                nix-env -f '<nixpkgs>' -iA \
+                  'nix-build-uncached' 'fish' 'rsync'
+            - uses: actions/cache@v3
+              with:
+                path: ~/ccache
+                key: ccaches-${{ github.job }}-${{ github.sha }}
+                restore-keys: |
+                    ccaches-${{ github.job }}-
+            - name: "Setup ccache for nix"
+              run: |
+                fish _scripts/ccache.fish setup
             - name: "Change TMPDIR for nix daemon"
               run: |
                 fish _scripts/set-tmpdir.fish
@@ -63,14 +95,19 @@ jobs:
                 authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
                 cachixArgs: "-j8 -c5"
                 pushFilter: |
-                    (NVIDIA.*\.run)|(-source)
+                    (NVIDIA.*\.run)|(-source|vendor\.tar\.gz)|(ccache|stdenv)
             - name: "Build"
               run: |
-                fish _scripts/seq-build.fish true workflow-builds.nix sequential
+                fish _scripts/seq-build.fish \
+                  true workflow-builds.nix sequential
             - name: "Cleanup"
               if: always()
               run: |
-                sudo nix-collect-garbage -d
+                nix-collect-garbage -d
+            - name: "Save ccache"
+              if: always()
+              run: |
+                fish _scripts/ccache.fish finish
     builds-kernels:
         runs-on: ubuntu-latest
         steps:
@@ -80,9 +117,23 @@ jobs:
             - uses: cachix/install-nix-action@v17
               with:
                 nix_path: "nixpkgs=channel:nixpkgs-unstable"
+                # Need manually sed /etc/nix/nix.conf to
+                # add extra-sandbox-paths since invoking
+                # nix happens before setup ccache dirs,
+                # which makes nix angry.
             - name: "Install tools"
               run: |
-                nix-env -f '<nixpkgs>' -iA 'nix-build-uncached' 'fish'
+                nix-env -f '<nixpkgs>' -iA \
+                  'nix-build-uncached' 'fish' 'rsync'
+            - uses: actions/cache@v3
+              with:
+                path: ~/ccache
+                key: ccaches-${{ github.job }}-${{ github.sha }}
+                restore-keys: |
+                    ccaches-${{ github.job }}-
+            - name: "Setup ccache for nix"
+              run: |
+                fish _scripts/ccache.fish setup
             - name: "Change TMPDIR for nix daemon"
               run: |
                 fish _scripts/set-tmpdir.fish
@@ -95,11 +146,16 @@ jobs:
                 authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
                 cachixArgs: "-j8 -c5"
                 pushFilter: |
-                    (NVIDIA.*\.run)|(-source)
+                    (NVIDIA.*\.run)|(-source|vendor\.tar\.gz)|(ccache|stdenv)
             - name: "Build"
               run: |
-                fish _scripts/seq-build.fish false workflow-builds.nix kernels-modules
+                fish _scripts/seq-build.fish \
+                  false workflow-builds.nix kernels-modules
             - name: "Cleanup"
               if: always()
               run: |
-                sudo nix-collect-garbage -d
+                nix-collect-garbage -d
+            - name: "Save ccache"
+              if: always()
+              run: |
+                fish _scripts/ccache.fish finish
