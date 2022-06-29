@@ -50,10 +50,18 @@
         (builtins.attrValues self.overlays);
 
 
-      # ...may do some testings to them...
+      # ...may do some testings on them...
 
       packages =
         pkgsForSystem lib.id;
+
+
+      # ...right into your shell...
+
+      devShells = pkgsForSystem ( pkgs: with pkgs;
+        mkShell {
+          packages = [ fish yq-go nix-build-uncached ];
+        } );
     };
 
 }
