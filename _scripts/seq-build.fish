@@ -8,6 +8,12 @@
 # - $3: a name in that attrset which contains a list of drvs
 #
 
+command --query nix-build-uncached
+    or begin
+        echo "nix-build-uncached not found"
+        exit 1
+    end
+
 set --local IgnoreError "$argv[1]"
 set --local AttrsetFile "$(path resolve "$argv[2]")"
 set --local DrvListName "$argv[3]"

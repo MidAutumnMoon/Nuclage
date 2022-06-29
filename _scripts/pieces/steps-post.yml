@@ -1,4 +1,4 @@
 - name: "Cleanup"
   if: always()
   run: |
-      nix store gc --verbose
+      nix-collect-garbage -d

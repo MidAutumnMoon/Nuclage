@@ -4,5 +4,5 @@ on:
     workflow_dispatch:
     push:
     schedule:
-        - cron: '0 1 * * *'
+        - cron: '0 15 * * *'
 

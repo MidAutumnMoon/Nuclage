@@ -6,14 +6,6 @@
   with:
       nix_path: "nixpkgs=channel:nixpkgs-unstable"
 
-- uses: cachix/cachix-action@v10
-  with:
-      name: "nuirrce"
-      authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      cachixArgs: "-j8 -c5"
-      pushFilter: |
-          (NVIDIA.*\.run)
-
 - name: "Install tools"
   run: |
       nix-env -f '<nixpkgs>' -iA 'nix-build-uncached' 'fish'
@@ -25,3 +17,12 @@
 - name: "Update flake"
   run: |
       nix flake update
+
+- uses: cachix/cachix-action@v10
+  with:
+      name: "nuirrce"
+      authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      cachixArgs: "-j8 -c5"
+      pushFilter: |
+          (NVIDIA.*\.run)|(-source)
+
