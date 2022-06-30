@@ -83,6 +83,11 @@ pref( 'general.disable_button.default_browser', true );
 
 pref( 'widget.non-native-theme.gtk.scrollbar.allow-buttons', true );
 
+pref( 'widget.use-xdg-desktop-portal.file-picker',  1 );
+pref( 'widget.use-xdg-desktop-portal.mime-handler', 1 );
+pref( 'widget.use-xdg-desktop-portal.location',     1 );
+pref( 'widget.use-xdg-desktop-portal.settings',     1 );
+
 pref( 'security.insecure_password.ui.enabled',              true );
 pref( 'security.insecure_field_warning.contextual.enabled', true );
 
