@@ -40,14 +40,14 @@ linuxPackages_zen.extend ( self: super:
     # and override it, then pass the
     # clang-able config to this "innocentKernel".
 
-    innocentKernel = super.kernel.override ( krlOld:
+    innocentKernel = super.kernel.override ( krlOldArgs:
       { structuredExtraConfig =
-            kernelConfigs // ( krlOld.structuredExtraConfig or {} );
+            kernelConfigs // ( krlOldArgs.structuredExtraConfig or {} );
       } );
 
-    awesomeKernel = innocentKernel.overrideDerivation ( oldDrv:
+    awesomeKernel = innocentKernel.overrideDerivation ( krlOldAttrs:
       { NIX_CFLAGS_COMPILE =
-          "-march=x86-64-v3 -mtune=znver2 ${oldDrv.NIX_CFLAGS_COMPILE or ""}";
+          "-march=x86-64-v3 -mtune=znver2 ${krlOldAttrs.NIX_CFLAGS_COMPILE or ""}";
       } );
 
   in
@@ -56,5 +56,10 @@ linuxPackages_zen.extend ( self: super:
 
     kernel =
       awesomeKernel;
+
+    zfsStable = super.zfsStable.overrideAttrs ( zfsOldAttrs:
+      { NIX_CFLAGS_COMPILE =
+          "-O3 -march=x86-64-v3 -mtune=znver2 ${zfsOldAttrs.NIX_CFLAGS_COMPILE or ""}";
+      } );
 
   } )
