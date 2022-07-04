@@ -34,7 +34,7 @@ rustPlatform.buildRustPackage rec {
   CARGO_PROFILE_RELEASE_LTO = "thin";
 
   RUSTFLAGS =
-    "-C target-cpu=x86-64-v3";
+    "-C target-cpu=x86-64-v3 -C opt-level=3";
 
   buildNoDefaultFeatures =
     true;
@@ -43,9 +43,11 @@ rustPlatform.buildRustPackage rec {
     [ "local"
       "server"
       "trust-dns"
+      "dns-over-tls"
       "dns-over-https"
       "local-http"
-      "rpmalloc"
+      "local-tun"
+      "mimalloc"
       "multi-threaded"
       "aead-cipher-2022"
       "logging"
