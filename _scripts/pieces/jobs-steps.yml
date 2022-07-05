@@ -1,18 +1,17 @@
 builds-parallel:
     - name: "Build"
       run: |
-          nix-build-uncached workflow-builds.nix \
-              -A parallel \
-              -build-flags '--print-build-logs'
+          fish _scripts/do-build.fish \
+            parallel false workflow-builds.nix parallel
 
-builds-sequential:
-    - name: "Build"
-      run: |
-          fish _scripts/seq-build.fish \
-            true workflow-builds.nix sequential
+# builds-sequential:
+#     - name: "Build"
+#       run: |
+#           fish _scripts/seq-build.fish \
+#             true workflow-builds.nix sequential
 
 builds-kernels:
     - name: "Build"
       run: |
-          fish _scripts/seq-build.fish \
-            false workflow-builds.nix kernels-modules
+          fish _scripts/do-build.fish \
+            sequential false workflow-builds.nix kernels-modules
