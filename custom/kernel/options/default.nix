@@ -46,6 +46,11 @@ in
 
   KALLSYMS = no;
 
+  MEMORY_HOTPLUG = forceNo;
+  MEMORY_HOTREMOVE = forceOptionNo;
+  ACPI_HOTPLUG_MEMORY = forceOptionNo;
+  ZONE_DEVICE = forceOptionNo;
+
 
   #
   # Networking
@@ -108,17 +113,21 @@ in
   TCP_MD5SIG = no;
   NET_IPGRE_DEMUX = no;
   NET_IPIP = no;
-  IP_MROUTE = no;
   NET_KEY = no;
   XFRM_INTERFACE = no;
   NET_FOU = no;
-  NET_FOU_IP_TUNNELS = forceNo;
   IPV6_FOU_TUNNEL = forceOptionNo;
   NET_IPVTI = no;
   NET_9P = no;
   RFKILL_GPIO = no;
   NET_DROP_MONITOR = forceOptionNo;
   IP_MROUTE_MULTIPLE_TABLES = forceOptionNo;
+  AF_RXRPC = no;
+  MPTCP = forceNo;
+  MPTCP_IPV6 = forceOptionNo;
+  INET_MPTCP_DIAG = forceOptionNo;
+  IP_MULTICAST = forceNo;
+  BPFILTER = yes;
     # Netfilter
     NF_CONNTRACK_AMANDA = no;
     NF_CONNTRACK_FTP = no;
@@ -175,6 +184,10 @@ in
     NET_SCH_HHF = no;
     NET_SCH_PLUG = no;
     NET_SCH_ETS = no;
+    # IPv6
+    IPV6_VTI = no;
+    IPV6_TUNNEL = no;
+    IPV6_SIT = no;
 
 
   #
@@ -884,21 +897,10 @@ in
       NOP_USB_XCEIV = no;
       USB_GPIO_VBUS = no;
       USB_ISP1301 = no;
-    USB_FOTG210_UDC = no;
-    USB_GR_UDC = no;
-    USB_R8A66597 = no;
-    USB_PXA27X = no;
-    USB_MV_UDC = no;
-    USB_MV_U3D = no;
-    USB_M66592 = no;
-    USB_BDC_UDC = no;
-    USB_AMD5536UDC = no;
-    USB_NET2272 = no;
-    USB_NET2280 = no;
-    USB_GOKU = no;
-    USB_EG20T = no;
-    USB_MAX3420_UDC = no;
-    USB_DUMMY_HCD = no;
+    USB_ULPI_BUS = no;
+    USB_UAS = no;
+    USB_GADGET = no;
+    USB_ROLES_INTEL_XHCI = no;
       # Type-cc
       TYPEC_RT1711H = no;
       TYPEC_TCPCI_MAXIM = no;
@@ -906,7 +908,6 @@ in
       TYPEC_TPS6598X = no;
       TYPEC_RT1719 = no;
       TYPEC_HD3SS3220 = no;
-      TYPEC_STUSB160X = no;
       TYPEC_WUSB3801 = no;
       TYPEC_MUX_PI3USB30532 = no;
       TYPEC_NVIDIA_ALTMODE = no;
@@ -919,9 +920,6 @@ in
     BCM_KONA_USB2_PHY = no;
     PHY_PXA_28NM_HSIC = no;
     PHY_PXA_28NM_USB2 = no;
-    PHY_QCOM_USB_HS = no;
-    PHY_QCOM_USB_HSIC = no;
-    PHY_TUSB1210 = no;
     PHY_INTEL_LGM_EMMC = no;
 
     # Graphics
@@ -1594,7 +1592,6 @@ in
     VIRTIO_NET = no;
     NLMON = no;
     NETCONSOLE = no;
-    AMT = no;
     NET_TEAM = no;
     USB4_NET = no;
       # Ethernet drivers
@@ -1906,6 +1903,7 @@ in
   X86_POWERNOW_K8 = no;
   X86_SPEEDSTEP_CENTRINO = no;
   X86_P4_CLOCKMOD = no;
+  X86_PCC_CPUFREQ = no;
   ACPI_DOCK = no;
   ACPI_HED = no;
   ACPI_NFIT = no;
@@ -1921,7 +1919,7 @@ in
   X86_EXTENDED_PLATFORM = no;
   X86_MCE_INTEL = no;
   MICROCODE_INTEL = forceOptionNo;  # enable this eventually
-  NR_CPUS = mkForce (freeform "32");
+  NR_CPUS = mkForce (freeform "16");
     # Processor select
     PROCESSOR_SELECT = yes;
     CPU_SUP_AMD = yes;
@@ -1934,6 +1932,9 @@ in
   LEGACY_VSYSCALL_NONE = yes;
   X86_INTEL_LPSS = forceNo;
   X86_SMAP = no;
+  SLS = yes;
+  X86_MCE_INJECT = no;
+  X86_5LEVEL = no;
 
 
   #
