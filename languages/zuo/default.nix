@@ -3,17 +3,17 @@
 let
 
   rev =
-    "fa746e3bb1be105499a5f80a8b846bf2bc27c826";
+    "779e58d6ccfb9a17487926fab864b3f88a020482";
 
   hash =
-    "sha256-v/I/RVC1WEm0dW5HGNL36rgWZq7xcchBcOWG3SDTcFU=";
+    "sha256-Vg8azsou161Jxrp7u3XYJyJnC8GZjgbdDrPJXSKR8QE=";
 
   zuoRoot =
     "racket/src/zuo";
 
 in
 
-stdenv.mkDerivation ( drvSelf: {
+stdenv.mkDerivation {
 
   pname = "zuo";
   version = "unstable";
@@ -22,12 +22,10 @@ stdenv.mkDerivation ( drvSelf: {
     { inherit rev hash;
       owner = "racket";
       repo = "racket";
-      sparseCheckout =
-        zuoRoot;
     };
 
   # Is there an alternative method?
   sourceRoot =
     "/build/source/${zuoRoot}";
 
-} )
+}
