@@ -34,7 +34,7 @@
   run: |
       nix flake update
 
-- uses: cachix/cachix-action@v10
+- uses: cachix/cachix-action@master
   with:
       name: "nuirrce"
       authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
