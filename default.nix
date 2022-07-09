@@ -30,6 +30,12 @@ in
     shadowsocks-rust =
       callPackage ./utils/network/shadowsocks-rust {  };
 
+    v2ray-core-teapot =
+      callPackage ./utils/network/v2ray/core.nix {  };
+
+    v2ray =
+      callPackage ./utils/network/v2ray { v2ray-core = final.v2ray-core-teapot; };
+
     # Something else
 
     git-crypt =
