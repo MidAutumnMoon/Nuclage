@@ -13,8 +13,8 @@ let
   numinus_src = fetchFromGitHub
     { owner = "MidAutumnMoon";
       repo = "Numinus";
-      rev = "03190f16d3523e4e8d1c3b13d590e38b40745bf7";
-      sha256 = "sha256-nLgJCUw5qn3JqiKxCwz8MwOGmuy2/D5aswlIHJyNV7w=";
+      rev = "2120aec11dc5d1c3c3fce417eb47a9b585772346";
+      sha256 = "2uf6s6/3Tus3rACdiYxyFiFmhxRzr9H66FAVgHrNDfw=";
     };
 
   basic_configs = runCommandNoCC "numinus-conf" {}
