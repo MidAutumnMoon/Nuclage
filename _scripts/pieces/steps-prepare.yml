@@ -40,5 +40,5 @@
       authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       cachixArgs: "-c7"
       pushFilter: |
-          (NVIDIA.*\.run)|(-source|vendor\..*)|(ccache|stdenv)
+          (NVIDIA.*\.run)|(-source|vendor\..*|go-modules)|(ccache|stdenv)
 
