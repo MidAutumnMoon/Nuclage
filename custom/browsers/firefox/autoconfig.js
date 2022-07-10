@@ -96,6 +96,9 @@ pref( 'browser.fixup.alternate.enabled', false )
 
 pref( 'devtools.theme', 'dark' );
 
+pref( 'browser.urlbar.autoFill.adaptiveHistory.enabled', true );
+pref( 'browser.urlbar.autoFill.adaptiveHistory.minCharsThreshold', 0 );
+
 
 
 ////
