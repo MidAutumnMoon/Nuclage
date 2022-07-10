@@ -1,0 +1,41 @@
+_prepare: &steps-prepare
+    - uses: actions/checkout@v3
+      with:
+          ref: master
+
+    - uses: cachix/install-nix-action@v17
+      with:
+          nix_path: "nixpkgs=channel:nixpkgs-unstable"
+
+    - name: Install required tools
+      run: |
+          nix-env -f '<nixpkgs>' -iA \
+            'nix-build-uncached' 'fish'
+
+    - uses: actions/cache@v3
+      with:
+          path: ~/ccache
+          key: ccaches-seg01-${{ github.job }}-${{ github.sha }}
+          restore-keys: |
+              ccaches-seg01--${{ github.job }}-
+
+    - name: Rstore previous ccaches
+      run: |
+          fish _scripts/ccache.fish setup
+
+    - name: Configure nix-daemon
+      run: |
+          fish _scripts/set-tmpdir.fish
+
+    - name: Update flakes before buiding anything
+      run: |
+          nix flake update
+
+    - uses: cachix/cachix-action@master
+      with:
+          name: "nuirrce"
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          cachixArgs: "-c7"
+          pushFilter: |
+              (NVIDIA.*\.run)|(-source|vendor\..*|go-modules)|(ccache|stdenv)
+

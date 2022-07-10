@@ -1,0 +1,34 @@
+#
+# Make sure this file is sorted at the end
+# in this directory.
+#
+
+name: "Build & Push (to Cachix)"
+
+on:
+    workflow_dispatch:
+    push:
+    schedule:
+        - cron: '0 15 * * *'
+
+jobs:
+
+    builds-parallel:
+        runs-on: ubuntu-latest
+        steps:
+            - *steps-prepare
+            - name: Build
+              run: |
+                fish _scripts/do-build.fish \
+                    parallel false workflow-builds.nix parallel
+            - *steps-post
+
+    builds-kernels-modules:
+        runs-on: ubuntu-latest
+        steps:
+            - *steps-prepare
+            - name: Build
+              run: |
+                fish _scripts/do-build.fish \
+                    parallel false workflow-builds.nix kernels-modules
+            - *steps-post

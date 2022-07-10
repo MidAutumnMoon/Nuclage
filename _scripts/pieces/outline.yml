@@ -1,8 +1,0 @@
-name: "Build & Push (to Cachix)"
-
-on:
-    workflow_dispatch:
-    push:
-    schedule:
-        - cron: '0 15 * * *'
-
