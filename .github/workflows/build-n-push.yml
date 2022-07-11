@@ -18,21 +18,21 @@ jobs:
               run: |
                 nix-env -f '<nixpkgs>' -iA \
                   'nix-build-uncached' 'fish'
-            - uses: actions/cache@v3
-              with:
-                path: ~/ccache
-                key: ccaches-seg01-${{ github.job }}-${{ github.sha }}
-                restore-keys: |
-                    ccaches-seg01--${{ github.job }}-
-            - name: Rstore previous ccaches
-              run: |
-                fish _scripts/ccache.fish setup
             - name: Configure nix-daemon
               run: |
                 fish _scripts/set-tmpdir.fish
             - name: Update flakes before buiding anything
               run: |
                 nix flake update
+            - uses: actions/cache@v3
+              with:
+                path: ~/ccache
+                key: ccaches-seg01-${{ github.job }}-${{ hashFiles( '**/flake.lock' ) }}
+                restore-keys: |
+                    ccaches-seg01--${{ github.job }}-
+            - name: Rstore previous ccaches
+              run: |
+                fish _scripts/ccache.fish setup
             - uses: cachix/cachix-action@master
               with:
                 name: "nuirrce"
@@ -65,21 +65,21 @@ jobs:
               run: |
                 nix-env -f '<nixpkgs>' -iA \
                   'nix-build-uncached' 'fish'
-            - uses: actions/cache@v3
-              with:
-                path: ~/ccache
-                key: ccaches-seg01-${{ github.job }}-${{ github.sha }}
-                restore-keys: |
-                    ccaches-seg01--${{ github.job }}-
-            - name: Rstore previous ccaches
-              run: |
-                fish _scripts/ccache.fish setup
             - name: Configure nix-daemon
               run: |
                 fish _scripts/set-tmpdir.fish
             - name: Update flakes before buiding anything
               run: |
                 nix flake update
+            - uses: actions/cache@v3
+              with:
+                path: ~/ccache
+                key: ccaches-seg01-${{ github.job }}-${{ hashFiles( '**/flake.lock' ) }}
+                restore-keys: |
+                    ccaches-seg01--${{ github.job }}-
+            - name: Rstore previous ccaches
+              run: |
+                fish _scripts/ccache.fish setup
             - uses: cachix/cachix-action@master
               with:
                 name: "nuirrce"
