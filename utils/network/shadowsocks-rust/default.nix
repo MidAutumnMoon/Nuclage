@@ -2,31 +2,31 @@
 
 let
 
-  version =
-    "1.15.0-alpha.5";
+  srcRev =
+    "c5f7caab8d7a800e5a6a16fe6588b11c710a0140";
 
-  hash =
-    "sha256-iXidM82WcWbQZGwElgt+ewba2pdDhGe7ez8+fqolff8=";
+  srcHash =
+    "sha256-keLyPi7LwA3KBHY9M75BRvivXMfQoVmzYj+R6vYN2BI=";
 
-  cargoHash =
-    "sha256-C3lxbhn4IqrpxO/dB1/8u6esArdem3B/M2+/jaTtQbo=";
+  cargoSha256 =
+    "sha256-GAW/3uOD5+xkP8X51gGdUCvopWStPX5AHamcg5N4JoM=";
 
 in
 
 rustPlatform.buildRustPackage rec {
 
-  inherit version;
   pname = "shadowsocks-rust";
+  version = "unstable";
 
   src = fetchFromGitHub
     { owner = "shadowsocks";
       repo = pname;
-      rev = "v${version}";
-      inherit hash;
+      rev = srcRev;
+      sha256 = srcHash;
     };
 
   inherit
-    cargoHash;
+    cargoSha256;
 
 
   doCheck = false;
@@ -46,7 +46,6 @@ rustPlatform.buildRustPackage rec {
       "dns-over-tls"
       "dns-over-https"
       "local-http"
-      "local-tun"
       "mimalloc"
       "multi-threaded"
       "aead-cipher-2022"
