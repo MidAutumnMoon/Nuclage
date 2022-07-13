@@ -1,4 +1,4 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{ lib, buildGo118Module, fetchFromGitHub }:
 
 let
 
@@ -6,13 +6,13 @@ let
     "v2ray-core";
 
   srcRev =
-    "fc6ae4d4e7f5158d7222a42c749d2bf7ca913632";
+    "8c6dfb2b6f3f6c0e16e8b8bf86262d17a3ec661c";
 
   srcHash =
-    "sha256-PBDdQHbw8iK9w/UOA3Q+WuYk+WtqiF7gn/YtTgSRH10=";
+    "TJG1uW90wKaaViPJ/NBju7wlvRvq812znbG5JAEslMg=";
 
   vendorHash =
-    "sha256-bxasyCuu8hBTxgYnr4lfLdWq5WXiyvHySRgWLOqpVTM=";
+    "sha256-swM6H3pbbRm/oDRkPHepEqAQvPHDmq1cVlusEvR9vhs=";
 
 
   coreSrc = fetchFromGitHub
@@ -24,7 +24,7 @@ let
 
 in
 
-buildGoModule {
+buildGo118Module {
 
   pname = name;
   version = "unstable";
@@ -35,6 +35,8 @@ buildGoModule {
 
   doCheck =
     false;
+
+  GOAMD64 = "v2";
 
   installPhase = ''
       mkdir --parent "$out/bin"
