@@ -2,29 +2,29 @@
 
 plasma5Packages.overrideScope' ( self: super: {
 
-  kdeGear = super.kdeGear.overrideScope' ( gearSelf: gearSuper: {
-    elisa =
-      emptyDirectory;
+  kdeGear = super.kdeGear.overrideScope' ( gearSelf: gearSuper:
+    { elisa =
+        emptyDirectory;
 
-    kinfocenter =
-      emptyDirectory;
+      kinfocenter =
+        emptyDirectory;
 
-    plasma-systemmonitor =
-      emptyDirectory;
+      plasma-systemmonitor =
+        emptyDirectory;
 
-    print-manager =
-      emptyDirectory;
+      print-manager =
+        emptyDirectory;
 
-    gwenview =
-      emptyDirectory;
+      gwenview =
+        emptyDirectory;
 
-    khelpcenter =
-      emptyDirectory;
-  } );
+      khelpcenter =
+        emptyDirectory;
+    } );
 
-  plasma5 = super.plasma5.overrideScope' ( plasmaSelf: plasmaSuper: {
-    plasma-browser-integration =
-      emptyDirectory;
-  } );
+  plasma5 = super.plasma5.overrideScope' ( plasmaSelf: plasmaSuper:
+    { plasma-browser-integration =
+        emptyDirectory;
+    } );
 
 } )

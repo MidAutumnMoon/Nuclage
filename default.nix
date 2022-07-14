@@ -17,6 +17,7 @@ in
 
     # Hardwares
 
+    # TODO: rename
     k380-function-key-conf =
       callPackage ./utils/hardware/keyboard/k380-function-key-conf { };
 
@@ -50,6 +51,7 @@ in
   # Editor: smart editors right to hurt you
   #
 
+  # TODO: rename these
   neovim-numinus =
     callPackage ./editor/neovim/numinus { };
 
@@ -120,14 +122,5 @@ in
 
   plasma5Packages =
     callPackage ./break/plasma5-packages { inherit (prev) plasma5Packages; };
-
-
-
-  #
-  # Stdenv: a cage to make the dragon of chaos controllable until one step inside it
-  #
-
-  ccacheStdenvNu =
-    callPackage ./nix/stdenv/ccacheStdenvNu.nix {  };
 
 }

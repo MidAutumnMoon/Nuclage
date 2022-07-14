@@ -28,7 +28,6 @@ rustPlatform.buildRustPackage rec {
   inherit
     cargoSha256;
 
-
   doCheck = false;
 
   CARGO_PROFILE_RELEASE_LTO = "thin";

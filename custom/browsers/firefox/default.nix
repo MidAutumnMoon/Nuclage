@@ -1,12 +1,11 @@
-{ firefox, ...}:
+{ firefox }:
 
 let
 
   # the original firefox with some customizations
   # which is already being wrapped
 
-  newFirefox =
-    firefox.override {
+  newFirefox = firefox.override {
       extraPolicies =
         import ./policies.nix;
       extraPrefs =
@@ -19,10 +18,8 @@ let
   # 1) fake a timezone for privacy reasons
   #
 
-  wrappedTwiceFirefox =
-    newFirefox.overrideAttrs ( oldAttrs: {
-      buildCommand =
-        ''
+  wrappedTwiceFirefox = newFirefox.overrideAttrs ( oldAttrs:
+    { buildCommand = ''
           ${oldAttrs.buildCommand}
           mv $out/bin/{firefox,.firefox-old-wrapped}
 
@@ -33,5 +30,5 @@ let
 
 in
 
-  wrappedTwiceFirefox
+wrappedTwiceFirefox
 

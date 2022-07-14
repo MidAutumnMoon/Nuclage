@@ -11,8 +11,7 @@ let
     "${k380-function-key-conf}/bin/k380_conf";
 
 
-  autoSwapFnKeyScript = writeShellScript "k380-auto-fn"
-    ''
+  autoSwapFnKeyScript = writeShellScript "k380-auto-fn" ''
       DEVICE="$(ls -l /sys/class/hidraw | grep 046D:B342 | grep -o 'hidraw[0-9]*$')"
 
       if test -n "$DEVICE" && (test -z "$1" || test "/dev/$DEVICE" = "$1")
@@ -22,8 +21,7 @@ let
       fi
     '';
 
-  udevRule =
-    ''
+  udevRule = ''
       ACTION=="add", KERNEL=="hidraw[0-9]*", RUN+="${autoSwapFnKeyScript} /dev/%k"
     '';
 
@@ -44,16 +42,14 @@ stdenvNoCC.mkDerivation {
 
   phases = [ "installPhase" ];
 
-  installPhase =
-    ''
+  installPhase = ''
       install -Dm644 \
         $udevRulePath $out/lib/udev/rules.d/60-k380-auto-fn.rules
     '';
 
 
   meta =
-    {
-      homepage = "https://github.com/jergusg/k380-function-keys-conf/";
+    { homepage = "https://github.com/jergusg/k380-function-keys-conf/";
       description = "Udev rules for auto swapping function keys when K380 keyboards connected";
       license = lib.licenses.gpl3;
     };

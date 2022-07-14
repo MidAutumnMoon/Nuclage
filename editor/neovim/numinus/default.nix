@@ -1,14 +1,7 @@
-{
-  lib, wrapNeovim
-,
-  neovim-unwrapped
-,
-  # add these packages to
-  # the wrapper's PATH
-  otherTools ? [ ]
-,
-  #
-  customRC ? null
+{ lib, wrapNeovim , neovim-unwrapped
+# TODO: rename
+, otherTools ? [ ]
+, customRC ? null
 }:
 
 # "wrapNeovim" is the marked as the "legacy" wrapper,
@@ -19,25 +12,30 @@
 #
 # What the .... :(
 
-wrapNeovim neovim-unwrapped (
-  {
-    extraName = "-numinus";
+let
 
-    withRuby = false;
-    withNodeJs = false;
-    withPython3 = false;
+  # Walkaround of an unexpected undefined
+  # behavior of the wrapper.
+  customRCAttrs =
+    if customRC != null
+    then { configure = { inherit customRC; }; }
+    else {};
 
-    vimAlias = true;
-    viAlias = true;
+  wrapperArguments =
+    { extraName = "-numinus";
 
-    extraMakeWrapperArgs =
-      ''
-        --prefix "PATH" ":" "${lib.makeBinPath otherTools}"
-      '';
-  }
-    //
-  ( if customRC == null
-    then {  }
-    else { configure.customRC = customRC; }
-  )
-)
+      withRuby = false;
+      withNodeJs = false;
+      withPython3 = false;
+
+      vimAlias = true;
+      viAlias = true;
+
+      extraMakeWrapperArgs = ''
+          --prefix PATH ':' '${lib.makeBinPath otherTools}'
+        '';
+    } // customRCAttrs;
+
+in
+
+wrapNeovim neovim-unwrapped wrapperArguments

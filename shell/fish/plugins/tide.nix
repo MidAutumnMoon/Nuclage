@@ -2,7 +2,8 @@
 
 let
 
-  version = "5.3.0";
+  version =
+    "5.3.0";
 
   hash =
     "sha256-/r+vaJIQ+yi7YDN7AThRKWDimdDuVmeYcg7t0GzebZE=";
@@ -21,8 +22,7 @@ buildFishPlugin {
       inherit hash;
     };
 
-  fixupPhase =
-    ''
+  fixupPhase = ''
       cp --verbose --recursive \
         'functions/tide' "$out/share/fish/vendor_functions.d"
     '';

@@ -3,21 +3,21 @@
 let
 
   src = fetchFromGitHub
-    {
-      owner = "dtinth";
+    { owner = "dtinth";
       repo = "comic-mono-font";
       rev = "9a96d04cdd2919964169192e7d9de5012ef66de4";
       sha256 = "q8NxrluWuH23FfRlntIS0MDdl3TkkGE7umcU2plS6eU=";
     };
 
+  buildEnvs =
+    { inherit src; };
+
+  buildCommand = ''
+      mkdir -p $out/share/fonts/truetype
+      cp $src/ComicMono*.ttf -t $out/share/fonts/truetype
+    '';
+
 in
 
-runCommand "ttf-comic-mono"
-  {
-    inherit src;
-  }
-  ''
-    mkdir -p $out/share/fonts/truetype
-    cp $src/ComicMono*.ttf -t $out/share/fonts/truetype
-  ''
+runCommand "ttf-comic-mono" buildEnvs buildCommand
 
