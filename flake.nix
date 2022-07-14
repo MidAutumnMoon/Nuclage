@@ -41,7 +41,7 @@
       # Various overlays...
 
       overlays.default =
-        import ./default.nix;
+        import ./default.nix { inherit lib; };
 
 
       # ...combined altogether...

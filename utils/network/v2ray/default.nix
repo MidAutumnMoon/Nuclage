@@ -1,23 +1,24 @@
 { runCommand, makeWrapper
 , v2ray-domain-list-community
 , v2ray-geoip
-, v2ray-core ? null
+, core ? null
 }:
 
 let
 
   pname =
-    "v2ray-${v2ray-core.version}";
+    "v2ray-${core.version}";
 
   cmdArgs =
     { nativeBuildInputs =
         [ makeWrapper ];
       meta =
-        v2ray-core.meta;
+        core.meta;
     };
 
   buildCmd = ''
-      mkdir -p "$out"
+      mkdir --parent "$out"
+      mkdir --parent "$out/bin"
 
       # Copy assets
 
@@ -29,12 +30,10 @@ let
       # Copy core executables
 
       cp --recursive --verbose --no-preserve=all \
-        "${v2ray-core}"/* \
+        "${core}"/* \
         "$out/old-bin"
 
       # Wrap executables
-
-      mkdir -p "$out/bin"
 
       for file in "$out/old-bin"/*
       do
@@ -46,6 +45,6 @@ let
 
 in
 
-assert v2ray-core != null;
+assert core != null;
 
 runCommand pname cmdArgs buildCmd

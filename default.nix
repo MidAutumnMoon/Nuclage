@@ -1,8 +1,11 @@
+{ lib }:
+
 final: prev:
 
 let
 
-  callPackage = final.callPackage;
+  callPackage =
+    final.newScope { inherit lib; };
 
 in
 
@@ -34,7 +37,7 @@ in
       callPackage ./utils/network/v2ray/core.nix {  };
 
     v2ray =
-      callPackage ./utils/network/v2ray { v2ray-core = final.v2ray-core-teapot; };
+      callPackage ./utils/network/v2ray { core = final.v2ray-core-teapot; };
 
     # Something else
 
