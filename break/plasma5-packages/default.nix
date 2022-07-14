@@ -1,11 +1,4 @@
-{
-  plasma5Packages
-, emptyDirectory
-}:
-
-#
-# Some accessory apps are useless.
-#
+{ plasma5Packages , emptyDirectory }:
 
 plasma5Packages.overrideScope' ( self: super: {
 
@@ -23,6 +16,9 @@ plasma5Packages.overrideScope' ( self: super: {
       emptyDirectory;
 
     gwenview =
+      emptyDirectory;
+
+    khelpcenter =
       emptyDirectory;
   } );
 
