@@ -17,12 +17,11 @@ in
 
     # Hardwares
 
-    # TODO: rename
-    k380-function-key-conf =
-      callPackage ./utils/hardware/keyboard/k380-function-key-conf { };
+    k380-fn-keys-swap =
+      callPackage ./utils/hardware/keyboard/k380/fn-keys-swap.nix { };
 
-    k380-auto-fn-udev =
-      callPackage ./utils/hardware/keyboard/k380-auto-fn-udev { };
+    k380-fn-keys-swap-udev =
+      callPackage ./utils/hardware/keyboard/k380/udev-rules.nix {  };
 
     # Some scripts
 

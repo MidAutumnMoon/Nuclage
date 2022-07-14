@@ -1,8 +1,8 @@
-{ lib, stdenv ,fetchFromGitHub }:
+{ lib, stdenv, fetchFromGitHub }:
 
 stdenv.mkDerivation rec {
 
-  pname = "k380-function-keys-conf";
+  pname = "k380-fn-keys-swap";
   version = "1.1";
 
   src = fetchFromGitHub
@@ -21,6 +21,7 @@ stdenv.mkDerivation rec {
     { homepage = "https://github.com/jergusg/k380-function-keys-conf/";
       description = "Make function keys default on Logitech k380 bluetooth keyboard.";
       license = lib.licenses.gpl3;
+      mainProgram = "k380_conf";
     };
 
 }
