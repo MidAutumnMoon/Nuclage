@@ -51,12 +51,11 @@ in
   # Editor: smart editors right to hurt you
   #
 
-  # TODO: rename these
-  neovim-numinus =
-    callPackage ./editor/neovim/numinus { };
+  neovim-teapot =
+    callPackage ./editor/neovim/teapot.nix {  };
 
-  neovim-numinus-static-conf =
-    callPackage ./editor/neovim/numinus/static-conf.nix {  };
+  neovim-teapot-with-config =
+    callPackage ./editor/neovim/with-config.nix {  };
 
 
 

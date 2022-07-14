@@ -1,6 +1,5 @@
 { lib, wrapNeovim , neovim-unwrapped
-# TODO: rename
-, otherTools ? [ ]
+, extraTools ? [ ]
 , customRC ? null
 }:
 
@@ -10,7 +9,7 @@
 # than the makeNeovimConfig + wrapNeovimUnstable
 # combination.
 #
-# What the .... :(
+# What the h :(
 
 let
 
@@ -32,7 +31,7 @@ let
       viAlias = true;
 
       extraMakeWrapperArgs = ''
-          --prefix PATH ':' '${lib.makeBinPath otherTools}'
+          --prefix PATH ':' '${lib.makeBinPath extraTools}'
         '';
     } // customRCAttrs;
 
