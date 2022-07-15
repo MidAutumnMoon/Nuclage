@@ -2,19 +2,20 @@
 
 let
 
-  variant = "v2ray";
+  variant = "xray";
 
   name =
     "${variant}-core";
 
   srcRev =
-    "8c6dfb2b6f3f6c0e16e8b8bf86262d17a3ec661c";
+    "5e323958b6f9e57180b13480b64301b6473a97c1";
 
   srcHash =
-    "TJG1uW90wKaaViPJ/NBju7wlvRvq812znbG5JAEslMg=";
+    "BmeRLPQdGsgVJdkUnZXLgp09/hQt5WKxxM/yUYw4q2Y=";
 
   vendorHash =
-    "sha256-swM6H3pbbRm/oDRkPHepEqAQvPHDmq1cVlusEvR9vhs=";
+    "sha256-85gtubSaeRiTcbzmK4ivWZEuc1ZdIR9RLFtVmRABd4I=";
+
 
 
 in
@@ -24,8 +25,8 @@ buildGo118Module {
   pname = name;
   version = "unstable";
 
-  src =  fetchFromGitHub
-    { owner = "v2fly";
+  src = fetchFromGitHub
+    { owner = "XTLS";
       repo = name;
       sha256 = srcHash;
       rev = srcRev;
@@ -44,8 +45,8 @@ buildGo118Module {
     '';
 
   meta =
-    { license = lib.licenses.mit;
-      homepage = "https://www.v2fly.org/";
+    { license = lib.licenses.mpl20;
+      homepage = "https://github.com/XTLS";
       mainProgram = variant;
     };
 

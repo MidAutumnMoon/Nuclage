@@ -36,8 +36,14 @@ in
     v2ray-core-teapot =
       callPackage ./utils/network/v2ray/core.nix {  };
 
+    xray-core-teapot =
+      callPackage ./utils/network/v2ray/xray.nix {  };
+
     v2ray =
-      callPackage ./utils/network/v2ray { core = final.v2ray-core-teapot; };
+      callPackage ./utils/network/v2ray/wrapper.nix { core = final.v2ray-core-teapot; };
+
+    xray =
+      callPackage ./utils/network/v2ray/wrapper.nix { core = final.xray-core-teapot; };
 
     # Something else
 

@@ -6,8 +6,11 @@
 
 let
 
+  variant =
+    core.passthru.variant;
+
   pname =
-    "v2ray-${core.version}";
+    "${variant}-${core.version}";
 
   cmdArgs =
     { nativeBuildInputs =
@@ -39,7 +42,8 @@ let
       do
         chmod a+x "$file"
         makeWrapper "$file" "$out/bin/$(basename $file)" \
-          --set-default V2RAY_LOCATION_ASSET "${placeholder "out"}/share/v2ray"
+          --set-default V2RAY_LOCATION_ASSET "${placeholder "out"}/share/v2ray" \
+          --set-default XRAY_LOCATION_ASSET "${placeholder "out"}/share/v2ray"
       done
     '';
 

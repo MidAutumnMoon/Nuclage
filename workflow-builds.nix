@@ -29,8 +29,8 @@ with flake.packages."x86_64-linux";
     [ shadowsocks-rust
       git-crypt
       zuo
-      v2ray-core-teapot
       v2ray
+      xray
     ];
 
 }
