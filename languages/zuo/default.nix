@@ -3,10 +3,10 @@
 let
 
   rev =
-    "779e58d6ccfb9a17487926fab864b3f88a020482";
+    "153ff9acb7ad63717a50bb26cd5aaa053870c666";
 
-  hash =
-    "sha256-Vg8azsou161Jxrp7u3XYJyJnC8GZjgbdDrPJXSKR8QE=";
+  sha256 =
+    "PmtIHX+Pd4QJPBfYwg345qSDFvIyVroZaRXltE6a52s=";
 
   zuoRoot =
     "racket/src/zuo";
@@ -19,7 +19,7 @@ stdenv.mkDerivation {
   version = "unstable";
 
   src = fetchFromGitHub
-    { inherit rev hash;
+    { inherit rev sha256;
       owner = "racket";
       repo = "racket";
     };
