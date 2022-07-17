@@ -13,10 +13,9 @@ with flake.packages."x86_64-linux";
   # may should build them on by one?
 
   kernels-modules =
-    [
-      linuxPackages_zen-teapot.kernel.all
+    [ linuxPackages_zen-teapot.kernel.all
       linuxPackages_zen-teapot.zfs
-      linuxPackages_zen-teapot.nvidiaPackages.stable
+      linuxPackages_zen-teapot.nvidiaPackages.stable.all
     ];
 
   sequential =
@@ -27,8 +26,7 @@ with flake.packages."x86_64-linux";
   # do them altogether.
 
   parallel =
-    [
-      shadowsocks-rust
+    [ shadowsocks-rust
       git-crypt
       zuo
       v2ray-core-teapot

@@ -62,4 +62,9 @@ linuxPackages_zen.extend ( self: super:
           "-O3 -march=x86-64-v3 -mtune=znver2 ${zfsOldAttrs.NIX_CFLAGS_COMPILE or ""}";
       } );
 
+    nvidiaPackages = super.nvidiaPackages.extend ( nvidiaSelf: nvidiaSuper:
+      { stable = nvidiaSuper.stable.override
+          { disable32Bit = true; };
+      } );
+
   } )
