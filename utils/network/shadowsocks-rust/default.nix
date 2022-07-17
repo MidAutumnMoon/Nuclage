@@ -3,13 +3,13 @@
 let
 
   srcRev =
-    "c5f7caab8d7a800e5a6a16fe6588b11c710a0140";
+    "f8a957bcd4a9b375bf4f4e872d534ebeff9db96c";
 
   srcHash =
-    "sha256-keLyPi7LwA3KBHY9M75BRvivXMfQoVmzYj+R6vYN2BI=";
+    "hRfvh94GZjQh5bt7piXXUEWlQOLHVJuji4M4zhmY+dw=";
 
   cargoSha256 =
-    "sha256-GAW/3uOD5+xkP8X51gGdUCvopWStPX5AHamcg5N4JoM=";
+    "sha256-i8LRt21yR/3NgV9yz1FfW8ZDcnwrZBDaFz1PgXeofxs=";
 
 in
 
@@ -33,7 +33,7 @@ rustPlatform.buildRustPackage rec {
   CARGO_PROFILE_RELEASE_LTO = "thin";
 
   RUSTFLAGS =
-    "-C target-cpu=x86-64-v3 -C opt-level=3";
+    "-C target-cpu=x86-64-v2 -C opt-level=3";
 
   buildNoDefaultFeatures =
     true;
