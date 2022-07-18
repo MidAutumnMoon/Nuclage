@@ -31,9 +31,22 @@ let
       viAlias = true;
 
       extraMakeWrapperArgs = ''
+          --set XDG_DATA_DIRS '${xdgDataDirs}' \
+          --set XDG_CONFIG_DIRS '${xdgConfigDirs}' \
           --prefix PATH ':' '${lib.makeBinPath extraTools}'
         '';
     } // customRCAttrs;
+
+  xdgDataDirs = builtins.concatStringsSep ":"
+    [ "/nix/var/nix/profiles/default/share"
+      "/run/current-system/sw/share"
+    ];
+
+  xdgConfigDirs = builtins.concatStringsSep ":"
+    [ "/etc/xdg"
+      "/nix/var/nix/profiles/default/etc/xdg"
+      "/run/current-system/sw/etc/xdg"
+    ];
 
 in
 
