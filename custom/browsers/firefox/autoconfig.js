@@ -60,6 +60,7 @@ pref( 'browser.urlbar.trimURLs',            false );
 pref( 'browser.urlbar.shortcuts.bookmarks', false );  // Annoying!
 pref( 'browser.urlbar.shortcuts.history',   false );
 pref( 'browser.urlbar.shortcuts.tabs',      false );
+pref( 'browser.urlbar.suggest.searches',    false );
 pref( 'browser.urlbar.suggest.engines',     false );
 pref( 'browser.urlbar.suggest.openpage',    false );
 pref( 'browser.urlbar.suggest.topsites',    false );
