@@ -7,8 +7,8 @@ let
   src = fetchFromGitHub
     { owner = "MidAutumnMoon";
       repo = "Numinus";
-      rev = "19cef12431497c833b96ab8e7c265ffaa621b6c6";
-      sha256 = "clZknosVxx+axQ8eFCZN+TfwttdbAX8lEjTkVq2+6j0=";
+      rev = "e23ed0558cdbce7db3aee71faccab476f40820ba";
+      sha256 = "TOyzBgdLJDMSf66kNXKYGReE719ujkLx86EM8Zqe+Go=";
     };
 
   extractScript = ''
@@ -23,9 +23,10 @@ let
       done
 
       cat "$src/plugin/HighlightYank.vim" >> "$out/conf.vim"
-      cat "$src/plugin/Statusline.vim" >> "$out/conf.vim"
       cat "$src/plugin/RememberPosition.lua" >> "$out/conf.lua"
       cat "$src/plugin/Whitespace.lua" >> "$out/conf.lua"
+
+      cat "${./Statusline.vim}" >> "$out/conf.vim"
     '';
 
   extractedConfig =
