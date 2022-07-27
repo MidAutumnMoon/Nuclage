@@ -28,7 +28,6 @@ with flake.packages."x86_64-linux";
   parallel =
     [ shadowsocks-rust
       git-crypt
-      zuo
       v2ray
       xray
     ];

@@ -68,10 +68,6 @@ in
   # Languages: a monkey with a typewriter can do express better
   #
 
-  zuo =
-    callPackage ./languages/zuo { };
-
-
 
   #
   # Themes: designs whose colors and shapes are insane and weird
