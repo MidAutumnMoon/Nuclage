@@ -1,12 +1,12 @@
-{ buildFishPlugin, fetchFromGitHub }:
+{ lib, buildFishPlugin, fetchFromGitHub }:
 
 let
 
   version =
-    "5.3.0";
+    "5.4.0";
 
   hash =
-    "sha256-/r+vaJIQ+yi7YDN7AThRKWDimdDuVmeYcg7t0GzebZE=";
+    "sha256-jswV+M3cNC3QnJxvugk8VRd3cOFmhg5ejLpdo36Lw1g=";
 
 in
 
@@ -26,5 +26,11 @@ buildFishPlugin {
       cp --verbose --recursive \
         'functions/tide' "$out/share/fish/vendor_functions.d"
     '';
+
+  meta =
+    { homepage = "https://github.com/IlanCosman/tide";
+      license = lib.licenses.mit;
+      description = "The ultimate Fish prompt.";
+    };
 
 }
