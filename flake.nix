@@ -4,22 +4,24 @@
 
 
   inputs =
-    {
-
-      nixpkgs.url =
+    { nixpkgs.url =
         "github:NixOS/nixpkgs/nixos-unstable-small";
 
       nulib.url =
         "github:MidAutumnMoon/Nulib";
 
-
       # MidAutumnMoon's 1p overlays
 
+      # Other things
+
+      neovim-upstream =
+        { url = "github:neovim/neovim?dir=contrib";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
 
   outputs = { self, nixpkgs, nulib, ... } @ flake:
-
     let
 
       lib =
@@ -35,13 +37,16 @@
         };
 
     in
-
     {
-
       # Various overlays...
 
       overlays.default =
         import ./default.nix { inherit lib; };
+
+      overlays.neovim-nightly = final: prev: {
+          neovim-unwrapped =
+            flake.neovim-upstream.packages.${final.system}.neovim;
+        };
 
 
       # ...combined altogether...

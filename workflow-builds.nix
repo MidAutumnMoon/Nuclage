@@ -30,6 +30,7 @@ with flake.packages."x86_64-linux";
       git-crypt
       v2ray
       xray
+      neovim-teapot
     ];
 
 }

@@ -1,5 +1,43 @@
 {
   "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1644229661,
+        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "neovim-upstream": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "contrib",
+        "lastModified": 1659275701,
+        "narHash": "sha256-zrL9khNPMwNU4L9kN5Npdxo7NZRkpUT/v3glBuY/+Zk=",
+        "owner": "neovim",
+        "repo": "neovim",
+        "rev": "68ec497d52bc8e93e12c74099ee9826b9469c3be",
+        "type": "github"
+      },
+      "original": {
+        "dir": "contrib",
+        "owner": "neovim",
+        "repo": "neovim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1657265485,
@@ -33,6 +71,7 @@
     },
     "root": {
       "inputs": {
+        "neovim-upstream": "neovim-upstream",
         "nixpkgs": "nixpkgs",
         "nulib": "nulib"
       }
