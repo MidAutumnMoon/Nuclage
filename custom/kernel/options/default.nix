@@ -51,6 +51,8 @@ in
   ACPI_HOTPLUG_MEMORY = forceOptionNo;
   ZONE_DEVICE = forceOptionNo;
 
+  CC_OPTIMIZE_FOR_PERFORMANCE_O3 = yes;
+
 
   #
   # Networking
@@ -128,6 +130,11 @@ in
   INET_MPTCP_DIAG = forceOptionNo;
   IP_MULTICAST = forceNo;
   BPFILTER = yes;
+  FAILOVER = no;
+  XDP_SOCKETS = forceNo;
+  XDP_SOCKETS_DIAG = forceOptionNo;
+  BRIDGE_VLAN_FILTERING = forceOptionNo;
+
     # Netfilter
     NF_CONNTRACK_AMANDA = no;
     NF_CONNTRACK_FTP = no;
@@ -139,6 +146,7 @@ in
     NF_CONNTRACK_SIP = no;
     NF_CONNTRACK_IRC = no;
     NF_CONNTRACK_TFTP = no;
+
     # Bluetooth
     BT_HCIBTUSB_BCM = no;
     BT_HCIBTUSB_MTK = forceNo;
@@ -227,6 +235,8 @@ in
   EDD = no;
   VFIO = no;
   VFIO_PCI_VGA = forceOptionNo;
+  USB4_DMA_TEST = no;
+  TEE = no;
 
     # SCSI
     #:continue
@@ -275,6 +285,17 @@ in
       SERIAL_FSL_LINFLEXUART = no;
       SERIAL_SPRD = no;
       SERIAL_8250 = forceNo;
+      # TPM
+      TCG_TIS_ST33ZP24_I2C = no;
+      TCG_TIS_ST33ZP24_SPI = no;
+      TCG_VTPM_PROXY = no;
+      TCG_INFINEON = no;
+      TCG_ATMEL = no;
+      TCG_NSC = no;
+      TCG_TIS_I2C_NUVOTON = no;
+      TCG_TIS_I2C_INFINEON = no;
+      TCG_TIS_I2C_ATMEL = no;
+      TCG_TIS_I2C_CR50 = no;
 
     # I2C
     I2C_MUX_GPIO = no;
@@ -346,9 +367,9 @@ in
     SPI_SPIDEV = no;
     SPI_LOOPBACK_TEST = no;
     SPI_TLE62X0 = no;
+    SPI_BITBANG = no;
 
     # Userspace IO
-    #:useless?
     UIO = no;
 
     # RTC : Realtime clock
@@ -759,6 +780,7 @@ in
 
     # Input devices
     #:continue
+    INPUT_MATRIXKMAP = no;
       # Mice
       MOUSE_PS2_VMMOUSE = forceOptionNo;
       MOUSE_PS2_CYPRESS = no;
@@ -773,6 +795,7 @@ in
       MOUSE_ELAN_I2C_SMBUS = forceOptionNo;
       MOUSE_VSXXXAA = no;
       MOUSE_GPIO = no;
+      MOUSE_SERIAL = no;
       # Keyboard
       KEYBOARD_ADP5588 = no;
       KEYBOARD_ADP5589 = no;
@@ -1049,8 +1072,6 @@ in
     ACER_WIRELESS = no;
     ADV_SWBUTTON = no;
     APPLE_GMUX = no;
-    EEEPC_LAPTOP = no;
-    EEEPC_WMI = no;
     X86_PLATFORM_DRIVERS_DELL = forceNo;
     AMILO_RFKILL = no;
     FUJITSU_LAPTOP = no;
@@ -1456,6 +1477,10 @@ in
     FIREWIRE_NOSY = no;
     MACINTOSH_DRIVERS = no;
 
+    # IOMMU
+    IOMMU_SUPPORT = no;
+    IRQ_REMAP = forceOptionNo;
+
     # Misc devices
     HABANA_AI = no;
     AD525X_DPOT = no;
@@ -1499,6 +1524,7 @@ in
     PCI_ENDPOINT_TEST = no;
     CB710_CORE = no;
     ALTERA_STAPL = no;
+    DUMMY_IRQ = no;
 
     # Multifunctional
     MFD_BCM590XX = no;
@@ -1571,6 +1597,10 @@ in
     SATA_SIL24 = no;
 
     # Network device
+    MACVLAN = no;
+    IPVLAN = no;
+    VXLAN = no;
+    MACSEC = no;
     EQUALIZER = no;
     NET_FC = forceNo;
     IFB = no;
@@ -1639,8 +1669,10 @@ in
       IPW2200 = no;
       IWL4965 = no;
       IWL3945 = no;
+      VIRT_WIFI = no;
     VMXNET3 = no;
     FUJITSU_ES = no;
+    NET_FAILOVER = no;
 
     # HID
     HID_A4TECH = no;
@@ -1935,6 +1967,7 @@ in
   SLS = yes;
   X86_MCE_INJECT = no;
   X86_5LEVEL = no;
+  X86_X2APIC = forceOptionNo;
 
 
   #
