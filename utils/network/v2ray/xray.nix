@@ -1,56 +1,25 @@
-{ lib, buildGo118Module, fetchFromGitHub }:
+{ lib, callPackage }:
 
-let
+callPackage ./coremon.nix rec {
+
+  srcRev =
+    "340234166b2ee994136aa346a25f53b367d28059";
+
+  srcHash =
+    "sha256-bHp/OZbCAQsWdf4qvKKHde23dnuY37gS2ehlFhxIvO0=";
+
+  vendorHash =
+    "sha256-F+CrlFLQpbhLT8w3frA9vdyqfDDhkhzLsTxrYhr9ph8=";
+
+  srcUrl =
+    "https://github.com/XTLS/Xray-core";
 
   variant = "xray";
 
-  name =
-    "${variant}-core";
-
-  srcRev =
-    "5e323958b6f9e57180b13480b64301b6473a97c1";
-
-  srcHash =
-    "BmeRLPQdGsgVJdkUnZXLgp09/hQt5WKxxM/yUYw4q2Y=";
-
-  vendorHash =
-    "sha256-85gtubSaeRiTcbzmK4ivWZEuc1ZdIR9RLFtVmRABd4I=";
-
-
-
-in
-
-buildGo118Module {
-
-  pname = name;
-  version = "unstable";
-
-  src = fetchFromGitHub
-    { owner = "XTLS";
-      repo = name;
-      sha256 = srcHash;
-      rev = srcRev;
-    };
-
-  vendorSha256 = vendorHash;
-
-  doCheck = false;
-
-  GOAMD64 = "v2";
-
-  installPhase = ''
-      mkdir --parent "$out/bin"
-      cp --verbose \
-        "$GOPATH/bin/main" "$out/bin/${variant}"
-    '';
-
   meta =
     { license = lib.licenses.mpl20;
-      homepage = "https://github.com/XTLS";
+      homepage = "https://www.v2fly.org/";
       mainProgram = variant;
     };
-
-  passthru =
-    { inherit variant; };
 
 }

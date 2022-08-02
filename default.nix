@@ -34,7 +34,7 @@ in
       callPackage ./utils/network/shadowsocks-rust {  };
 
     v2ray-core-teapot =
-      callPackage ./utils/network/v2ray/core.nix {  };
+      callPackage ./utils/network/v2ray/v2ray.nix {  };
 
     xray-core-teapot =
       callPackage ./utils/network/v2ray/xray.nix {  };
